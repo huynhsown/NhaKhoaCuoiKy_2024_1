@@ -59,7 +59,7 @@ namespace NhaKhoaCuoiKy.Views.Medicines
                 if (MedicineHelper.updateMedicine(maThuoc, tenThuoc, hDSD, thanhPhan, giaNhap, giaBan, soLuong, congTy))
                 {
                     MessageBox.Show("Sửa thuốc thành công", "Sửa thuốc", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    medicine.loadAllMedicine();
+                    medicine.loadMedicine(MedicineHelper.getAllMedicine());
                     Close();
                 }
                 else

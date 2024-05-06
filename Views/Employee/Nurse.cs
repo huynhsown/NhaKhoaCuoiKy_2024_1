@@ -154,7 +154,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
         {
             loadAllNurse();
         }
-        private void loadAllNurse()
+        public void loadAllNurse()
         {
             try
             {

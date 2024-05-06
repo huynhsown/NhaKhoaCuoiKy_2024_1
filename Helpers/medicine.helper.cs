@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
+using NhaKhoaCuoiKy.Views.Employee;
+using System.Xml.Linq;
 
 namespace NhaKhoaCuoiKy.Helpers
 {
@@ -37,7 +39,7 @@ namespace NhaKhoaCuoiKy.Helpers
             return dt;
         }
 
-        public static string addNewMedicine( string maThuoc,string tenThuoc, string hDSD, string thanhPhan, int giaNhap, int giaBan, int soLuong, string congTy)
+        public static string addNewMedicine(string maThuoc, string tenThuoc, string hDSD, string thanhPhan, int giaNhap, int giaBan, int soLuong, string congTy)
         {
             Database db = new Database();
             string id = null;
@@ -125,6 +127,73 @@ namespace NhaKhoaCuoiKy.Helpers
                 db.closeConnection();
             }
             return dt;
+        }
+
+        internal static bool removeMedicine(string medID)
+        {
+            Database db = new Database();
+            bool check = false;
+            try
+            {
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand("removeMedicine", db.getConnection))
+                {
+                    cmd.Parameters.AddWithValue("@MaThuoc", medID);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    if (cmd.ExecuteNonQuery() >= 1)
+                    {
+                        check = true;
+                    }
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+            return check;
+        }
+
+        internal static bool updateMedicine(string maThuoc, string tenThuoc, string hDSD, string thanhPhan, int giaNhap, int giaBan, int soLuong, string congTy)
+        {
+            Database db = null;
+            bool check = false;
+            try
+            {
+                db = new Database();
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand("updateMedicine", db.getConnection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaThuoc", maThuoc);
+                    cmd.Parameters.AddWithValue("@TenThuoc", tenThuoc);
+                    cmd.Parameters.AddWithValue("@HuongDanSD", hDSD);
+                    cmd.Parameters.AddWithValue("@ThanhPhan", thanhPhan);
+                    cmd.Parameters.AddWithValue("@GiaNhap", giaNhap);
+                    cmd.Parameters.AddWithValue("@GiaBan", giaBan);
+                    cmd.Parameters.AddWithValue("@SoLuong", soLuong);
+                    cmd.Parameters.AddWithValue("@CongTy", congTy);
+
+
+
+                    // Execute the command
+                    if (cmd.ExecuteNonQuery() > 0) check = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                throw ex;
+            }
+            finally
+            {
+                if (db != null) db.closeConnection();
+            }
+            return check;
         }
     }
 }

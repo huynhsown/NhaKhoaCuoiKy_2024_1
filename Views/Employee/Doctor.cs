@@ -160,7 +160,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
             loadAllDoctor();
         }
 
-        private void loadAllDoctor()
+        public void loadAllDoctor()
         {
             try
             {
