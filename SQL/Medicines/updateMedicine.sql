@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE updateMedicine
     @MaThuoc NVARCHAR(50),
 	@TenThuoc NVARCHAR(255),

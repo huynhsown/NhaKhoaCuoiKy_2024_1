@@ -32,30 +32,9 @@ namespace NhaKhoaCuoiKy.Views.Employee
 
         private void guna2Button_themmoi_Click(object sender, EventArgs e)
         {
-            newGuard?.Close();
-            newGuard = new NewGuard();
-            newGuard.Owner = this;
-            newGuard.Show();
-            newGuard.eventAddGuard += (s, e) =>
-            {
-                DynamicParameters p = new DynamicParameters();
-                int maBV = p.Get<int>("@MaNhanVien");
-                string hoTen = p.Get<string>("@HoVaTen");
-                string gioiTinh = p.Get<string>("@GioiTinh");
-                string ngaySinh = p.Get<DateTime>("@NgaySinh").ToShortDateString();
-                int tienLuong = p.Get<int>("@TienLuong");
-                string ngayBDLV = p.Get<DateTime>("@NgayBatDauLamViec").ToShortDateString();
-                int soNha = p.Get<int>("@SoNha");
-                string soDienThoai = p.Get<string>("@SoDienThoai");
-                string duong = p.Get<string>("@TenDuong");
-                string phuong = p.Get<string>("@Phuong");
-                string thanhPho = p.Get<string>("@ThanhPho");
-                string viTriLamViec = p.Get<string>("@ViTriLamViec");
-                string diaChi = soNha.ToString() + " " + duong + " " + phuong + " " + thanhPho;
-                data_baoVe.Rows.Add(maBV, hoTen, soDienThoai, ngaySinh, gioiTinh, diaChi);
-            };
-        }
-
+            newGuard = new NewGuard(this);
+            ViewHelper.loadForm(newGuard, mainForm);
+        } 
         private void btn_search_Click(object sender, EventArgs e)
         {
             int index = cb_filter.SelectedIndex;
@@ -94,7 +73,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
 
         }
 
-        private void loadGuard(DataTable dt)
+        public void loadGuard(DataTable dt)
         {
             // Clear existing rows in data_baoVe DataTable
             data_baoVe.Rows.Clear();
@@ -251,6 +230,88 @@ namespace NhaKhoaCuoiKy.Views.Employee
             else
             {
                 MessageBox.Show("Vui lòng chọn một dòng để xóa.");
+            }
+        }
+
+        private void data_baoVe_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (data_baoVe.Columns[e.ColumnIndex].Name == "HanhDong")
+                {
+                    int guardId = Convert.ToInt32(data_baoVe.SelectedRows[0].Cells["MaBV"].Value);
+                    DialogResult dr = MessageBox.Show("Bạn chắc chắn xóa?", "Xóa", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    if (dr == DialogResult.Yes)
+                    {
+                        if (EmployeeHelper.removeGuard(guardId))
+                        {
+                            MessageBox.Show("Xóa thành công", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadAllGuard();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa thất bại", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                if (data_baoVe.Columns[e.ColumnIndex].Name == "ThongTin")
+                {
+                    int guardId = Convert.ToInt32(data_baoVe.SelectedRows[0].Cells["MaBV"].Value);
+                    loadForm(new EditGuard(this, guardId));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        void loadForm(Form form)
+        {
+            FormBackGround formBackGround = new FormBackGround(mainForm);
+            try
+            {
+                using (form)
+                {
+                    formBackGround.Owner = mainForm;
+                    formBackGround.Show();
+                    form.Owner = formBackGround;
+                    form.ShowDialog();
+                    formBackGround.Dispose();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void data_baoVe_SelectionChanged(object sender, EventArgs e)
+        {
+            if (data_baoVe.SelectedCells.Count > 0)
+            {
+                // Hiển thị tất cả các cell trong DataGridView
+                foreach (DataGridViewRow row in data_baoVe.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        cell.Style.ForeColor = Color.Black; // Đặt màu chữ thành màu mặc định
+                        cell.Style.BackColor = Color.White; // Đặt màu nền thành màu mặc định
+                    }
+                }
+            }
+            else
+            {
+                // Ẩn tất cả các cell trong DataGridView
+                foreach (DataGridViewRow row in data_baoVe.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        cell.Style.ForeColor = Color.White; // Đặt màu chữ thành màu nền (ẩn cell)
+                        cell.Style.BackColor = Color.White; // Đặt màu nền thành màu nền (ẩn cell)
+                    }
+                }
             }
         }
     }

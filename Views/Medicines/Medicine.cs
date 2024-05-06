@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,7 +18,6 @@ namespace NhaKhoaCuoiKy.Views.Employee.Medicines
     public partial class Medicine : Form
     {
         MainForm mainForm;
-        NewMedicine newMedicine;
         UserModel userAccount;
         public Medicine()
         {
@@ -28,32 +28,18 @@ namespace NhaKhoaCuoiKy.Views.Employee.Medicines
             InitializeComponent();
             this.mainForm = mainForm;
             this.userAccount = userAccount;
-        }
-
-        void loadForm(Form form)
-        {
-            FormBackGround formBackGround = new FormBackGround(mainForm);
-            try
+            if(userAccount.decentralization != 0)
             {
-                using (form)
-                {
-                    formBackGround.Owner = mainForm;
-                    formBackGround.Show();
-                    form.Owner = formBackGround;
-                    form.ShowDialog();
-                    formBackGround.Dispose();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                button_themmoi.Visible = false;
+                data_thuoc.Columns["SuaThuoc"].Visible = false;
+                data_thuoc.Columns["XoaThuoc"].Visible = false;
             }
         }
 
         private void button_themmoi_Click(object sender, EventArgs e)
         {
-            loadForm(new NewMedicine(this));
+            NewMedicine newMedicine = new NewMedicine(this);
+            ViewHelper.loadForm(newMedicine, mainForm);
         }
 
         private void btn_search_Click(object sender, EventArgs e)
@@ -81,7 +67,7 @@ namespace NhaKhoaCuoiKy.Views.Employee.Medicines
 
         }
 
-        public void loadMedicine(DataTable dt)
+        private void loadMedicine(DataTable dt)
         {
 
             data_thuoc.Rows.Clear();
@@ -115,6 +101,104 @@ namespace NhaKhoaCuoiKy.Views.Employee.Medicines
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void data_thuoc_SelectionChanged(object sender, EventArgs e)
+        {
+            if (data_thuoc.SelectedCells.Count > 0)
+            {
+                // Hiển thị tất cả các cell trong DataGridView
+                foreach (DataGridViewRow row in data_thuoc.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        cell.Style.ForeColor = Color.Black; // Đặt màu chữ thành màu mặc định
+                        cell.Style.BackColor = Color.White; // Đặt màu nền thành màu mặc định
+                    }
+                }
+            }
+            else
+            {
+                // Ẩn tất cả các cell trong DataGridView
+                foreach (DataGridViewRow row in data_thuoc.Rows)
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        cell.Style.ForeColor = Color.White; // Đặt màu chữ thành màu nền (ẩn cell)
+                        cell.Style.BackColor = Color.White; // Đặt màu nền thành màu nền (ẩn cell)
+                    }
+                }
+            }
+        }
+
+        private void data_thuoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (data_thuoc.Columns[e.ColumnIndex].Name == "XoaThuoc")
+                {
+                    string medID = data_thuoc.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    DialogResult dr = MessageBox.Show("Bạn chắc chắn xóa?", "Xóa", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    if (dr == DialogResult.Yes)
+                    {
+                        if (MedicineHelper.removeMedicine(medID))
+                        {
+                            MessageBox.Show("Xóa thành công", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadAllMedicine();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa thất bại", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                if (data_thuoc.Columns[e.ColumnIndex].Name == "SuaThuoc")
+                {
+                    string medID = data_thuoc.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    loadForm(new EditMedicine(this, medID));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void loadAllMedicine()
+        {
+            try
+            {
+                DataTable dt = MedicineHelper.getAllMedicine();
+                loadMedicine(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        void loadForm(Form form)
+        {
+            FormBackGround formBackGround = new FormBackGround(mainForm);
+            try
+            {
+                using (form)
+                {
+                    formBackGround.Owner = mainForm;
+                    formBackGround.Show();
+                    form.Owner = formBackGround;
+                    form.ShowDialog();
+                    formBackGround.Dispose();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            loadAllMedicine();
         }
     }
 }

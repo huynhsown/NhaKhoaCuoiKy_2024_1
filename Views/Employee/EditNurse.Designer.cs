@@ -566,6 +566,7 @@
             // 
             // btn_cancel
             // 
+            btn_cancel.BackColor = Color.White;
             btn_cancel.BorderRadius = 15;
             btn_cancel.BorderThickness = 1;
             btn_cancel.CustomizableEdges = customizableEdges23;
@@ -582,6 +583,7 @@
             btn_cancel.Size = new Size(113, 48);
             btn_cancel.TabIndex = 155;
             btn_cancel.Text = "Hủy";
+            btn_cancel.Click += btn_cancel_Click;
             // 
             // label7
             // 
@@ -750,6 +752,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(618, 636);
             Controls.Add(pb_phone);
             Controls.Add(pb_homenum);
@@ -792,8 +795,11 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(tb_name);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "EditNurse";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "EditNurse";
+            Load += EditNurse_Load;
             ((System.ComponentModel.ISupportInitialize)pb_phone).EndInit();
             ((System.ComponentModel.ISupportInitialize)pb_homenum).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();

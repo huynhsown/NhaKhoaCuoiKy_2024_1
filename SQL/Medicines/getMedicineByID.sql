@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE [dbo].[getMedicineByID]
 	@MaThuoc NVARCHAR(50) OUTPUT
 AS

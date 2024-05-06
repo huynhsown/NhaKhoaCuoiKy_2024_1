@@ -303,6 +303,7 @@
             btn_uploadImg.Size = new Size(203, 29);
             btn_uploadImg.TabIndex = 129;
             btn_uploadImg.Text = "Upload Ảnh";
+            btn_uploadImg.Click += btn_uploadImg_Click;
             // 
             // label8
             // 
@@ -803,6 +804,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(612, 635);
             Controls.Add(pb_phone);
             Controls.Add(pictureBox10);
@@ -853,7 +855,7 @@
             Name = "EditDoctor";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EditDoctor";
-            Load += EditDoctor_Load_1;
+            Load += EditDoctor_Load;
             ((System.ComponentModel.ISupportInitialize)pb_phone).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox10).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();

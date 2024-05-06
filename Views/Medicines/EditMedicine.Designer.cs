@@ -123,6 +123,7 @@
             btn_cancel.Size = new Size(113, 33);
             btn_cancel.TabIndex = 79;
             btn_cancel.Text = "Hủy";
+            btn_cancel.Click += btn_cancel_Click;
             // 
             // pictureBox6
             // 
@@ -496,6 +497,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(673, 480);
             Controls.Add(btn_add);
             Controls.Add(btn_cancel);
@@ -523,8 +525,11 @@
             Controls.Add(label1);
             Controls.Add(tb_medicineid);
             Controls.Add(tb_name);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "EditMedicine";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "EditMedicine";
+            Load += EditMedicine_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pb_quantity).EndInit();
             ((System.ComponentModel.ISupportInitialize)pb_price).EndInit();

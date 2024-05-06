@@ -35,7 +35,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
         );
 
 
-        public NewNurse()
+        public NewNurse(Nurse nurse)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
@@ -58,8 +58,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            try
-            {
+            
                 string name = tb_name.Text;
                 string hocVi = tb_hocvi.Text;
                 string chuyenMon = tb_chuyenmon.Text;
@@ -75,11 +74,11 @@ namespace NhaKhoaCuoiKy.Views.Employee
                 int salary = int.Parse(tb_tienluong.Text);
                 if (rdb_male.Checked)
                 {
-                    gender = "nam";
+                    gender = "Nam";
                 }
                 else if (rdb_female.Checked)
                 {
-                    gender = "nu";
+                    gender = "Nữ";
                 }
                 MemoryStream ms = new MemoryStream();
                 pb_avt.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
@@ -89,6 +88,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
                 if (EmployeeHelper.addNewNurse(name, hocVi, chuyenMon, gender, birth, salary, beginwork, homenum, ward, city, position, img, phone, street))
                 {
                     MessageBox.Show("Thêm y tá thành công", "Thêm y tá", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    nurse.loadAllNurse();
                     Close();
                 }
                 else
@@ -100,11 +100,8 @@ namespace NhaKhoaCuoiKy.Views.Employee
                 //DataRow dr = dt.Rows[0];
                 //eventAddGuard?.Invoke(sender, e);
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ERROR::" + ex.Message);
-            }
+            
+            
         }
 
         private void warningValidate(PictureBox picbox, Guna2TextBox tb, bool check)

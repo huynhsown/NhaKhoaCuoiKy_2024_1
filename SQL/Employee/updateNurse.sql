@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE updateNurse
     @MaNhanVien INT,
 	@HoVaTen NVARCHAR(255),
@@ -12,7 +14,6 @@ CREATE PROCEDURE updateNurse
 	@TenDuong NVARCHAR(255),
 	@ThanhPho NVARCHAR(255),
 	@ViTriLamViec NVARCHAR(255),
-	@Anh IMAGE,
 	@SoDienThoai NVARCHAR(50)
 AS
 BEGIN
@@ -28,7 +29,6 @@ BEGIN
         [TenDuong] = @TenDuong,
         [ThanhPho] = @ThanhPho,
         [ViTriLamViec] = @ViTriLamViec,
-        [Anh] = @Anh,
         [SoDienThoai] = @SoDienThoai
     WHERE
         [MaNhanVien] = @MaNhanVien;

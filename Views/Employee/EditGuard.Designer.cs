@@ -480,6 +480,7 @@
             // 
             // btn_cancel
             // 
+            btn_cancel.BackColor = Color.Transparent;
             btn_cancel.BorderRadius = 15;
             btn_cancel.BorderThickness = 1;
             btn_cancel.CustomizableEdges = customizableEdges19;
@@ -496,6 +497,7 @@
             btn_cancel.Size = new Size(113, 48);
             btn_cancel.TabIndex = 110;
             btn_cancel.Text = "Hủy";
+            btn_cancel.Click += btn_cancel_Click;
             // 
             // label7
             // 
@@ -646,6 +648,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(612, 577);
             Controls.Add(pb_homenum);
             Controls.Add(pb_phone);
@@ -682,7 +685,9 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(tb_name);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "EditGuard";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "EditGuard";
             Load += EditGuard_Load;
             ((System.ComponentModel.ISupportInitialize)pb_homenum).EndInit();

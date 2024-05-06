@@ -7,6 +7,8 @@ using NhaKhoaCuoiKy.Views.Service;
 using NhaKhoaCuoiKy.Models;
 using NhaKhoaCuoiKy.Views.LogIn;
 using System.Text;
+using NhaKhoaCuoiKy.Views.QualityEvaluation;
+using NhaKhoaCuoiKy.Views.Revenues;
 
 namespace NhaKhoaCuoiKy.Views
 {
@@ -31,6 +33,9 @@ namespace NhaKhoaCuoiKy.Views
         private UserManagement userManagement;
 
         private AppointMent newAppointment;
+        private Evaluation evaluation;
+        private Revenue revenue;
+        private HieuSuatLamViec hslv;
         private void MainForm_Load(object sender, EventArgs e)
         {
             panel_btn_employee.AutoSize = true;
@@ -40,6 +45,9 @@ namespace NhaKhoaCuoiKy.Views
                 btn_employee.Enabled = false;
                 btn_service.Visible = false;
                 btn_service.Enabled = false;
+                btn_user.Visible = false;
+                btn_doanhthu.Visible = false;
+                btn_hslv.Visible = false;
             }
         }
 
@@ -243,5 +251,26 @@ namespace NhaKhoaCuoiKy.Views
             }
         }
         #endregion
+
+        private void btn_danhgia_Click(object sender, EventArgs e)
+        {
+            closeAllPanel();
+            evaluation?.Close();
+            openChildForm(evaluation = new Evaluation(this));
+        }
+
+        private void btn_doanhthu_Click(object sender, EventArgs e)
+        {
+            closeAllPanel();
+            revenue?.Close();
+            openChildForm(revenue = new Revenue(this));
+        }
+
+        private void btn_hslv_Click(object sender, EventArgs e)
+        {
+            closeAllPanel();
+            hslv?.Close();
+            openChildForm(hslv = new HieuSuatLamViec(this));
+        }
     }
 }

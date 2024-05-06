@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE [dbo].[getMedicineByName]
 	@TenThuoc VARCHAR(255)
 AS

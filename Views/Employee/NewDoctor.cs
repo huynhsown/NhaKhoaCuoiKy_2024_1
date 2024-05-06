@@ -20,7 +20,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
         public EventHandler eventAddDoctor;
         public DynamicParameters p { get; set; }
         private Doctor doctor;
-
+        
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
         private static extern IntPtr CreateRoundRectRgn
@@ -34,7 +34,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
         );
 
 
-        public NewDoctor()
+        public NewDoctor(Doctor doctor)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
@@ -81,6 +81,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
                 if (id != -1)
                 {
                     MessageBox.Show("Thêm bác sĩ thành công", "Thêm bác sĩ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    doctor.loadAllDoctor();
                     Close();
                 }
                 else

@@ -64,7 +64,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
                 string city = row["ThanhPho"].ToString();
                 string gender = row["GioiTinh"].ToString();
                 string street = row["TenDuong"].ToString();
-                string position = row["ViTri"].ToString();
+                string position = row["ViTriLamViec"].ToString();
                 DateTime beginwork = Convert.ToDateTime(row["NgayBatDauLamViec"]);
                 int salary = Convert.ToInt32(row["TienLuong"]);
 
@@ -74,11 +74,11 @@ namespace NhaKhoaCuoiKy.Views.Employee
                 tb_homenum.Text = homenum.ToString();
                 tb_ward.Text = ward;
                 tb_city.Text = city;
-                if (gender.Trim().Equals("nam", StringComparison.OrdinalIgnoreCase))
+                if (gender.Trim().Equals("Nam", StringComparison.OrdinalIgnoreCase))
                 {
                     rdb_male.Checked = true;
                 }
-                else if (gender.Trim().Equals("nu", StringComparison.OrdinalIgnoreCase))
+                else if (gender.Trim().Equals("Nữ", StringComparison.OrdinalIgnoreCase))
                 {
                     rdb_female.Checked = true;
                 }
@@ -108,7 +108,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-           
+
             if (!verify())
             {
                 MessageBox.Show("Dữ liệu thiếu hoặc sai", "Sửa bảo vệ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -129,16 +129,16 @@ namespace NhaKhoaCuoiKy.Views.Employee
                 int salary = int.Parse(tb_tienluong.Text);
                 if (rdb_male.Checked)
                 {
-                    gender = "nam";
+                    gender = "Nam";
                 }
                 else if (rdb_female.Checked)
                 {
-                    gender = "nu";
+                    gender = "Nữ";
                 }
                 MemoryStream ms = new MemoryStream();
                 pb_avt.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 byte[] img = ms.ToArray();
-                if (EmployeeHelper.updateEmployee( guardId,  name,  gender,  birth,  salary,  beginwork,  homenum,  ward,  city,  position, img,  phone,  street))
+                if (EmployeeHelper.updateGuard(guardId, name, gender, birth, salary, beginwork, homenum, ward, city, position, img, phone, street))
                 {
                     MessageBox.Show("Sửa bảo vệ thành công", "Sửa bảo vệ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     guard.loadAllGuard();
@@ -181,6 +181,11 @@ namespace NhaKhoaCuoiKy.Views.Employee
             //    || tb_unit.BorderThickness == 3
             //    || tb_warranty.BorderThickness == 3) return false;
             return true;
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

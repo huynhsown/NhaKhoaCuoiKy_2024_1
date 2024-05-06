@@ -59,7 +59,7 @@ namespace NhaKhoaCuoiKy.Views.Medicines
                 if (MedicineHelper.updateMedicine(maThuoc, tenThuoc, hDSD, thanhPhan, giaNhap, giaBan, soLuong, congTy))
                 {
                     MessageBox.Show("Sửa thuốc thành công", "Sửa thuốc", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    medicine.loadMedicine(MedicineHelper.getAllMedicine());
+                    medicine.loadAllMedicine();
                     Close();
                 }
                 else
@@ -75,6 +75,45 @@ namespace NhaKhoaCuoiKy.Views.Medicines
             catch (Exception ex)
             {
                 MessageBox.Show("ERROR::" + ex.Message);
+            }
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void EditMedicine_Load(object sender, EventArgs e)
+        {
+            try { 
+                DataTable dataTable = MedicineHelper.getMedicineByID(medID);
+                if (dataTable.Rows.Count == 0)
+                {
+                    Close();
+                    return;
+                }
+            
+                string tenThuoc = dataTable.Rows[0]["TenThuoc"].ToString();
+                string hDSD = dataTable.Rows[0]["HuongDanSD"].ToString();
+                string thanhPhan = dataTable.Rows[0]["ThanhPhan"].ToString();
+                int giaNhap = Convert.ToInt32(dataTable.Rows[0]["GiaNhap"].ToString());
+                int giaBan = Convert.ToInt32(dataTable.Rows[0]["GiaBan"].ToString());
+                int soLuong = Convert.ToInt32(dataTable.Rows[0]["SoLuong"].ToString());
+                string congTy = dataTable.Rows[0]["CongTy"].ToString();
+                tb_medicineid.Text = medID;
+                tb_medicineid.Enabled = false;
+                tb_name.Text = tenThuoc;
+                tb_howtouse.Text = hDSD;
+                tb_ingredient.Text = thanhPhan;
+                tb_importprice.Text = giaNhap.ToString();
+                tb_price.Text = giaBan.ToString();
+                tb_quantity.Text = soLuong.ToString();
+                tb_company.Text = congTy;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

@@ -51,7 +51,6 @@ namespace NhaKhoaCuoiKy.Views.Appointment
         {
             DateOnly picker = DateOnly.Parse(monthCalendar.SelectionRange.Start.ToShortDateString());
             DateOnly today = DateOnly.Parse(DateTime.Now.ToShortDateString());
-
             loadWork(picker);
         }
 
@@ -184,6 +183,13 @@ namespace NhaKhoaCuoiKy.Views.Appointment
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            DateOnly picker = DateOnly.Parse(monthCalendar.SelectionRange.Start.ToShortDateString());
+            DateOnly today = DateOnly.Parse(DateTime.Now.ToShortDateString());
+            if(picker.Day < today.Day)
+            {
+                MessageBox.Show("Không thể đặt lịch", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             loadForm(createAppointment = new CreateAppointment(emptySchedules, monthCalendar.SelectionRange.Start, 0, doctor_id));
         }
     }

@@ -767,6 +767,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(618, 636);
             Controls.Add(pb_phone);
             Controls.Add(pb_homenum);
@@ -809,7 +810,9 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(tb_name);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "NewNurse";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "NewNurse";
             ((System.ComponentModel.ISupportInitialize)pb_name).EndInit();
             ((System.ComponentModel.ISupportInitialize)pb_phone).EndInit();

@@ -532,7 +532,6 @@
             Name = "NewMedicine";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "NewMedicine";
-            Load += NewMedicine_Load;
             ((System.ComponentModel.ISupportInitialize)pb_name).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pb_importprice).EndInit();

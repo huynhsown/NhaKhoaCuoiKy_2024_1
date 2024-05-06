@@ -1,35 +1,32 @@
-CREATE PROCEDURE [dbo].[addNurse]
-	@MaNhanVien INT OUT,
-	@HoVaTen NVARCHAR(255),
-	@HocVi NVARCHAR(255),
-	@ChuyenMon NVARCHAR(255),
-	@GioiTinh NVARCHAR(5),
-	@NgaySinh DATE,
-	@TienLuong INT, 
-	@NgayBatDauLamViec DATE,
-	@SoNha INT,
-	@Phuong NVARCHAR(255),
-	@TenDuong NVARCHAR(255),
-	@ThanhPho NVARCHAR(255),
-	@ViTriLamViec NVARCHAR(255),
-	@Anh IMAGE,
-	@SoDienThoai NVARCHAR(50)
+﻿USE NHAKHOA
+GO
+CREATE PROCEDURE addNurse
+    @HoVaTen NVARCHAR(255),
+    @GioiTinh NVARCHAR(5),
+    @NgaySinh DATE,
+    @TienLuong INT,
+    @NgayBatDauLamViec DATE,
+    @SoNha INT,
+    @Phuong NVARCHAR(255),
+    @ThanhPho NVARCHAR(255),
+    @ViTriLamViec NVARCHAR(255),
+    @Anh IMAGE,
+    @SoDienThoai NVARCHAR(50),
+    @TenDuong NVARCHAR(255),
+    @HocVi NVARCHAR(255),
+    @ChuyenMon NVARCHAR(255)
 AS
 BEGIN
-	INSERT INTO [dbo].[NHANVIEN] VALUES(
-			@HoVaTen,
-			@GioiTinh,
-			@NgaySinh,
-			@TienLuong, 
-			@NgayBatDauLamViec,
-			@SoNha,
-			@Phuong,
-			@ThanhPho,
-			@TenDuong,
-			@ViTriLamViec,
-			@Anh,
-			@SoDienThoai);
-	SET @MaNhanVien = SCOPE_IDENTITY();
-	INSERT INTO [dbo].[YTA] VALUES ( @HocVi, @ChuyenMon, @MaNhanVien);
-	RETURN 1;
-END
+    DECLARE @MaNhanVien INT;
+
+    -- Thêm vào bảng NHANVIEN
+    INSERT INTO NHANVIEN (HoVaTen, GioiTinh, NgaySinh, TienLuong, NgayBatDauLamViec, SoNha, Phuong, ThanhPho, ViTriLamViec, Anh, SoDienThoai, TenDuong)
+    VALUES (@HoVaTen, @GioiTinh, @NgaySinh, @TienLuong, @NgayBatDauLamViec, @SoNha, @Phuong, @ThanhPho, @ViTriLamViec, @Anh, @SoDienThoai, @TenDuong);
+
+    -- Lấy MaNhanVien vừa thêm vào
+    SET @MaNhanVien = SCOPE_IDENTITY();
+
+    -- Thêm vào bảng YTA
+    INSERT INTO YTA (HocVi, ChuyenMon, MaNhanVien)
+    VALUES (@HocVi, @ChuyenMon, @MaNhanVien);
+END;

@@ -144,44 +144,49 @@ namespace NhaKhoaCuoiKy.Helpers
             return dt;
         }
 
-        public static int addNewEmployee(string name, string gender, DateTime birth, int salary, DateTime beginworkdate, int homenumber, string ward, string city, string positionwork, byte[] img, string phone, string street)
+        public static bool addGuard(string name, string gender, DateTime birth, int salary, DateTime beginworkdate, int homenumber, string ward, string city, string positionwork, byte[] img, string phone, string street)
         {
-            Database db = new Database();
-            int id = -1;
+            Database db = null;
+            bool check = false;
             try
             {
-                int check;
-                var p = new DynamicParameters();
-                p.Add("@MaNhanVien", 0, DbType.Int32, direction: ParameterDirection.Output);
-                p.Add("@HoVaTen", name);
-                p.Add("@GioiTinh", gender);
-                p.Add("@NgaySinh", birth);
-                p.Add("@TienLuong", salary);
-                p.Add("@NgayBatDauLamViec", beginworkdate);
-                p.Add("@SoNha", homenumber);
-                p.Add("@Phuong", ward);
-                p.Add("@TenDuong", street);
-                p.Add("@ThanhPho", city);
-                p.Add("@ViTriLamViec", positionwork);
-                p.Add("@Anh", img);
-                p.Add("@SoDienThoai", phone);
-
-                using (IDbConnection connection = db.getConnection)
+                db = new Database();
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand("addGuard", db.getConnection))
                 {
-                    check = connection.Execute("addGuard", p, commandType: CommandType.StoredProcedure);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaNhanVien", 0);
+                    cmd.Parameters.AddWithValue("@HoVaTen", name);
+                    cmd.Parameters.AddWithValue("@GioiTinh", gender);
+                    cmd.Parameters.AddWithValue("@NgaySinh", birth);
+                    cmd.Parameters.AddWithValue("@TienLuong", salary);
+                    cmd.Parameters.AddWithValue("@NgayBatDauLamViec", beginworkdate);
+                    cmd.Parameters.AddWithValue("@SoNha", homenumber);
+                    cmd.Parameters.AddWithValue("@Phuong", ward);
+                    cmd.Parameters.AddWithValue("@ThanhPho", city);
+                    cmd.Parameters.AddWithValue("@ViTriLamViec", positionwork);
+                    cmd.Parameters.AddWithValue("@Anh", img);
+                    cmd.Parameters.AddWithValue("@SoDienThoai", phone);
+                    cmd.Parameters.AddWithValue("@TenDuong", street);
+
+                    // Execute the command
+                    if (cmd.ExecuteNonQuery() > 0)
+                        check = true;
                 }
-                if (check == 1) id = p.Get<int>("@MaNhanVien");
             }
-            catch
+            catch (Exception ex)
             {
-                throw;
+                // Handle exceptions
+                throw ex;
             }
             finally
             {
-
+                if (db != null)
+                    db.closeConnection();
             }
-            return id;
+            return check;
         }
+
         public static bool updateEmployee(int guardId, string name, string gender, DateTime birth, int salary, DateTime beginworkdate, int homenumber, string ward, string city, string positionwork, byte[] img, string phone, string street)
         {
             Database db = null;
@@ -223,6 +228,50 @@ namespace NhaKhoaCuoiKy.Helpers
             }
             return check;
         }
+
+        public static bool updateGuard(int guardId, string name, string gender, DateTime birth, int salary, DateTime beginworkdate, int homenumber, string ward, string city, string positionwork, byte[] img, string phone, string street)
+        {
+            Database db = null;
+            bool check = false;
+            try
+            {
+                db = new Database();
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand("updateGuard", db.getConnection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@MaNhanVien", guardId);
+                    cmd.Parameters.AddWithValue("@HoVaTen", name);
+                    cmd.Parameters.AddWithValue("@GioiTinh", gender);
+                    cmd.Parameters.AddWithValue("@NgaySinh", birth);
+                    cmd.Parameters.AddWithValue("@TienLuong", salary);
+                    cmd.Parameters.AddWithValue("@NgayBatDauLamViec", beginworkdate);
+                    cmd.Parameters.AddWithValue("@SoNha", homenumber);
+                    cmd.Parameters.AddWithValue("@Phuong", ward);
+                    cmd.Parameters.AddWithValue("@ThanhPho", city);
+                    cmd.Parameters.AddWithValue("@ViTriLamViec", positionwork);
+                    cmd.Parameters.AddWithValue("@Anh", img);
+                    cmd.Parameters.AddWithValue("@SoDienThoai", phone);
+                    cmd.Parameters.AddWithValue("@TenDuong", street);
+
+                    // Execute the command
+                    if (cmd.ExecuteNonQuery() > 0)
+                        check = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                throw ex;
+            }
+            finally
+            {
+                if (db != null)
+                    db.closeConnection();
+            }
+            return check;
+        }
+
 
 
         internal static DataTable getEmployeeByID(int id)
@@ -404,9 +453,9 @@ namespace NhaKhoaCuoiKy.Helpers
                     cmd.Parameters.AddWithValue("@SoDienThoai", phone);
                     cmd.Parameters.AddWithValue("@TenDuong", street);
 
-
                     // Execute the command
-                    if (cmd.ExecuteNonQuery() > 0) check = true;
+                    if (cmd.ExecuteNonQuery() > 0)
+                        check = true;
                 }
             }
             catch (Exception ex)
@@ -416,22 +465,22 @@ namespace NhaKhoaCuoiKy.Helpers
             }
             finally
             {
-                if (db != null) db.closeConnection();
+                if (db != null)
+                    db.closeConnection();
             }
             return check;
         }
-        public static bool updateNurse(int doctorId, string name, string hocVi, string chuyenMon, string gender, DateTime birth, int salary, DateTime beginworkdate, int homenumber, string ward, string city, string positionwork, byte[] img, string phone, string street)
+
+        public static bool updateNurse(int nurseId, string name, string hocVi, string chuyenMon, string gender, DateTime birth, int salary, DateTime beginworkdate, int homenumber, string ward, string city, string positionwork, byte[] img, string phone, string street)
         {
-            Database db = null;
+            Database db = new Database();
             bool check = false;
             try
             {
-                db = new Database();
                 db.openConnection();
                 using (SqlCommand cmd = new SqlCommand("updateNurse", db.getConnection))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@MaNhanVien", doctorId);
+                    cmd.Parameters.AddWithValue("@MaNhanVien", nurseId);
                     cmd.Parameters.AddWithValue("@HoVaTen", name);
                     cmd.Parameters.AddWithValue("@HocVi", hocVi);
                     cmd.Parameters.AddWithValue("@ChuyenMon", chuyenMon);
@@ -441,28 +490,31 @@ namespace NhaKhoaCuoiKy.Helpers
                     cmd.Parameters.AddWithValue("@NgayBatDauLamViec", beginworkdate);
                     cmd.Parameters.AddWithValue("@SoNha", homenumber);
                     cmd.Parameters.AddWithValue("@Phuong", ward);
+                    cmd.Parameters.AddWithValue("@TenDuong", street);
                     cmd.Parameters.AddWithValue("@ThanhPho", city);
                     cmd.Parameters.AddWithValue("@ViTriLamViec", positionwork);
-                    cmd.Parameters.AddWithValue("@Anh", img);
                     cmd.Parameters.AddWithValue("@SoDienThoai", phone);
-                    cmd.Parameters.AddWithValue("@TenDuong", street);
 
-
-                    // Execute the command
-                    if (cmd.ExecuteNonQuery() > 0) check = true;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    if (cmd.ExecuteNonQuery() >= 1)
+                    {
+                        check = true;
+                    }
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                // Handle exceptions
-                throw ex;
+                throw;
             }
             finally
             {
-                if (db != null) db.closeConnection();
+                db.closeConnection();
             }
             return check;
         }
+
+
+
         internal static DataTable getDoctorByID(int id)
         {
             DataTable dt = new DataTable();
@@ -582,7 +634,6 @@ namespace NhaKhoaCuoiKy.Helpers
             {
                 int check;
                 var p = new DynamicParameters();
-                p.Add("@MaNhanVien", 0, DbType.Int32, direction: ParameterDirection.Output);
                 p.Add("@HoVaTen", name);
                 p.Add("@HocVi", hocVi);
                 p.Add("@ChuyenMon", chuyenMon);
@@ -602,8 +653,7 @@ namespace NhaKhoaCuoiKy.Helpers
                 {
                     check = connection.Execute("addNurse", p, commandType: CommandType.StoredProcedure);
                 }
-                if (check == 1) return true;
-                else return false;
+                return check > 0; // Trả về true nếu ít nhất một hàng được thêm vào
             }
             catch
             {
@@ -611,9 +661,10 @@ namespace NhaKhoaCuoiKy.Helpers
             }
             finally
             {
-
+                // Đóng kết nối hoặc thực hiện các công việc cần thiết trong phần finally
             }
         }
+
 
         internal static DataTable getNurseByID(int id)
         {

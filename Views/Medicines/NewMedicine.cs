@@ -19,7 +19,8 @@ namespace NhaKhoaCuoiKy.Views.Medicines
     {
         public EventHandler eventAddMedicine;
         private Validate validate = new Validate();
-        Medicine medicine;
+        private Medicine medicine;
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
         private static extern IntPtr CreateRoundRectRgn
@@ -35,7 +36,6 @@ namespace NhaKhoaCuoiKy.Views.Medicines
         {
             InitializeComponent();
             this.medicine = medicine;
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace NhaKhoaCuoiKy.Views.Medicines
                 if (id != null)
                 {
                     MessageBox.Show("Thêm thuốc thành công", "Thêm thuốc", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    medicine.loadMedicine(MedicineHelper.getAllMedicine());
+                    medicine.loadAllMedicine();
                     Close();
                 }
                 else
@@ -68,6 +68,9 @@ namespace NhaKhoaCuoiKy.Views.Medicines
                     MessageBox.Show("Thêm thuốc thất bại", "Thêm thuốc", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                //DataTable dt = EmployeeHelper.getEmployeeByID(id);
+                //DataRow dr = dt.Rows[0];
+                //eventAddGuard?.Invoke(sender, e);
 
             }
             catch (Exception ex)
@@ -95,11 +98,6 @@ namespace NhaKhoaCuoiKy.Views.Medicines
         private void tb_quantity_TextChanged(object sender, EventArgs e)
         {
             warningValidate(pb_quantity, tb_quantity, validate.validateNumber(tb_quantity.Text));
-        }
-
-        private void NewMedicine_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

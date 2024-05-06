@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             guna2RatingStar1 = new Guna.UI2.WinForms.Guna2RatingStar();
             pb_anh = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -63,27 +63,28 @@
             guna2Panel1.Controls.Add(label1);
             guna2Panel1.Controls.Add(cbb_manv);
             guna2Panel1.Controls.Add(tb_tennv);
-            guna2Panel1.CustomizableEdges = customizableEdges19;
-            guna2Panel1.Location = new Point(87, 65);
+            guna2Panel1.CustomizableEdges = customizableEdges7;
+            guna2Panel1.Dock = DockStyle.Top;
+            guna2Panel1.Location = new Point(0, 0);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges20;
-            guna2Panel1.Size = new Size(908, 132);
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2Panel1.Size = new Size(1071, 132);
             guna2Panel1.TabIndex = 4;
             // 
             // guna2RatingStar1
             // 
-            guna2RatingStar1.Location = new Point(745, 49);
+            guna2RatingStar1.Location = new Point(792, 48);
             guna2RatingStar1.Name = "guna2RatingStar1";
             guna2RatingStar1.Size = new Size(150, 35);
             guna2RatingStar1.TabIndex = 5;
             // 
             // pb_anh
             // 
-            pb_anh.CustomizableEdges = customizableEdges13;
+            pb_anh.CustomizableEdges = customizableEdges1;
             pb_anh.ImageRotate = 0F;
             pb_anh.Location = new Point(142, 15);
             pb_anh.Name = "pb_anh";
-            pb_anh.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            pb_anh.ShadowDecoration.CustomizableEdges = customizableEdges2;
             pb_anh.Size = new Size(119, 102);
             pb_anh.TabIndex = 4;
             pb_anh.TabStop = false;
@@ -111,7 +112,7 @@
             // cbb_manv
             // 
             cbb_manv.BackColor = Color.Transparent;
-            cbb_manv.CustomizableEdges = customizableEdges15;
+            cbb_manv.CustomizableEdges = customizableEdges3;
             cbb_manv.DrawMode = DrawMode.OwnerDrawFixed;
             cbb_manv.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_manv.FocusedColor = Color.FromArgb(94, 148, 255);
@@ -121,14 +122,14 @@
             cbb_manv.ItemHeight = 30;
             cbb_manv.Location = new Point(325, 48);
             cbb_manv.Name = "cbb_manv";
-            cbb_manv.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            cbb_manv.ShadowDecoration.CustomizableEdges = customizableEdges4;
             cbb_manv.Size = new Size(149, 36);
             cbb_manv.TabIndex = 1;
             cbb_manv.SelectedIndexChanged += cbb_manv_SelectedIndexChanged;
             // 
             // tb_tennv
             // 
-            tb_tennv.CustomizableEdges = customizableEdges17;
+            tb_tennv.CustomizableEdges = customizableEdges5;
             tb_tennv.DefaultText = "";
             tb_tennv.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             tb_tennv.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -142,23 +143,23 @@
             tb_tennv.PasswordChar = '\0';
             tb_tennv.PlaceholderText = "";
             tb_tennv.SelectedText = "";
-            tb_tennv.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            tb_tennv.ShadowDecoration.CustomizableEdges = customizableEdges6;
             tb_tennv.Size = new Size(167, 36);
             tb_tennv.TabIndex = 0;
             // 
             // panel1
             // 
-            panel1.CustomizableEdges = customizableEdges21;
-            panel1.Location = new Point(136, 283);
+            panel1.CustomizableEdges = customizableEdges9;
+            panel1.Location = new Point(33, 218);
             panel1.Name = "panel1";
-            panel1.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            panel1.Size = new Size(803, 399);
+            panel1.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            panel1.Size = new Size(1004, 505);
             panel1.TabIndex = 5;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(136, 218);
+            label3.Location = new Point(33, 138);
             label3.Name = "label3";
             label3.Size = new Size(41, 20);
             label3.TabIndex = 11;
@@ -167,7 +168,7 @@
             // cbb_year
             // 
             cbb_year.BackColor = Color.Transparent;
-            cbb_year.CustomizableEdges = customizableEdges23;
+            cbb_year.CustomizableEdges = customizableEdges11;
             cbb_year.DrawMode = DrawMode.OwnerDrawFixed;
             cbb_year.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_year.FocusedColor = Color.FromArgb(94, 148, 255);
@@ -176,9 +177,9 @@
             cbb_year.ForeColor = Color.Black;
             cbb_year.ItemHeight = 30;
             cbb_year.Items.AddRange(new object[] { "2023", "2024" });
-            cbb_year.Location = new Point(136, 241);
+            cbb_year.Location = new Point(33, 161);
             cbb_year.Name = "cbb_year";
-            cbb_year.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            cbb_year.ShadowDecoration.CustomizableEdges = customizableEdges12;
             cbb_year.Size = new Size(175, 36);
             cbb_year.StartIndex = 0;
             cbb_year.TabIndex = 10;
@@ -188,6 +189,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(1071, 763);
             Controls.Add(label3);
             Controls.Add(cbb_year);

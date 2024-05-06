@@ -112,10 +112,11 @@ namespace NhaKhoaCuoiKy.Views.Employee
                 pb_avt.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                 byte[] img = ms.ToArray();
 
-                int id = EmployeeHelper.addNewEmployee(name, gender, birth, salary, beginwork, homenum, ward, city, position, img, phone, street);
-                if (id != -1)
+                bool id = EmployeeHelper.addGuard(name, gender, birth, salary, beginwork, homenum, ward, city, position, img, phone, street);
+                if (id)
                 {
                     MessageBox.Show("Thêm bảo vệ thành công", "Thêm nhân viên", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    guard.loadAllGuard();
                     Close();
                 }
                 else
@@ -159,6 +160,11 @@ namespace NhaKhoaCuoiKy.Views.Employee
         private void tb_sodienthoai_TextChanged(object sender, EventArgs e)
         {
             warningValidate(pb_phone, tb_sodienthoai, validate.validateNumber(tb_sodienthoai.Text));
+        }
+
+        private void btn_cancel_Click_1(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -503,6 +503,7 @@
             btn_cancel.Size = new Size(113, 48);
             btn_cancel.TabIndex = 74;
             btn_cancel.Text = "Hủy";
+            btn_cancel.Click += btn_cancel_Click_1;
             // 
             // label7
             // 
@@ -661,6 +662,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(612, 577);
             Controls.Add(pb_homenum);
             Controls.Add(pb_phone);
@@ -697,7 +699,9 @@
             Controls.Add(label3);
             Controls.Add(label1);
             Controls.Add(tb_name);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "NewGuard";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "NewGuard";
             ((System.ComponentModel.ISupportInitialize)pb_homenum).EndInit();
             ((System.ComponentModel.ISupportInitialize)pb_phone).EndInit();

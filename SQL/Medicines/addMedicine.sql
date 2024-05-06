@@ -1,3 +1,5 @@
+USE NHAKHOA
+GO
 CREATE PROCEDURE [dbo].[addMedicine]
 	@MaThuoc NVARCHAR(50),
 	@TenThuoc NVARCHAR(255),
