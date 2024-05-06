@@ -220,5 +220,202 @@ namespace NhaKhoaCuoiKy.Helpers
             return newInvoiceID;
         }
 
+
+        public static DataTable getRecordByPatient(int patientID)
+        {
+            DataTable dt = new DataTable();
+            Database db = null;
+            try
+            {
+                db = new Database();
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand($"select * from THONGTINBENHAN join NHANVIEN on THONGTINBENHAN.MaNhanVien = NHANVIEN.MaNhanVien where THONGTINBENHAN.MaBenhNhan = {patientID};", db.getConnection))
+                {
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dt.Load(dr);
+                    dr.Close();
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (db != null) { db.closeConnection(); }
+            }
+            return dt;
+        }
+
+        public static DataTable getRecordByID(int recordID)
+        {
+            DataTable dt = new DataTable();
+            Database db = null;
+            try
+            {
+                db = new Database();
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand($"select * from THONGTINBENHAN join NHANVIEN on THONGTINBENHAN.MaNhanVien = NHANVIEN.MaNhanVien where THONGTINBENHAN.MaBenhAn = {recordID};", db.getConnection))
+                {
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dt.Load(dr);
+                    dr.Close();
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (db != null) { db.closeConnection(); }
+            }
+            return dt;
+        }
+
+        public static bool removeRecordByID(int recordID)
+        {
+            Database db = null;
+            bool check = false;
+            try
+            {
+                db = new Database();
+                db.openConnection();
+                string query = $"delete from THONGTINBENHAN where THONGTINBENHAN.MaBenhAn = {recordID}";
+                using (SqlCommand cmd = new SqlCommand(query, db.getConnection))
+                {
+                    if (cmd.ExecuteNonQuery() > 0) check = true;
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (db != null) { db.closeConnection(); }
+            }
+            return check;
+        }
+
+        public static bool removeInvoiceByID(int recordID)
+        {
+            Database db = null;
+            bool check = false;
+            try
+            {
+                db = new Database();
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand("deleteInvoiceAndRelatedInfo", db.getConnection))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Thêm tham số cho thủ tục lưu trữ
+                    cmd.Parameters.AddWithValue("@MaHoaDon", recordID);
+
+                    // Thực thi thủ tục lưu trữ
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    // Kiểm tra xem có hóa đơn nào bị xóa hay không
+                    if (rowsAffected > 0)
+                    {
+                        check = true;
+                    }
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (db != null) { db.closeConnection(); }
+            }
+            return check;
+        }
+
+
+        public static DataTable getInvoiceByPatient(int patientID)
+        {
+            DataTable dt = new DataTable();
+            Database db = null;
+            try
+            {
+                db = new Database();
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand($"select * from HOADON where HOADON.MaBenhNhan = {patientID};", db.getConnection))
+                {
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dt.Load(dr);
+                    dr.Close();
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (db != null) { db.closeConnection(); }
+            }
+            return dt;
+        }
+        public static DataTable getMedicineOfInvoice(int invoiceID)
+        {
+            DataTable dt = new DataTable();
+            Database db = null;
+            try
+            {
+                db = new Database();
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand($"select * from THONGTINSUDUNGTHUOC join THUOC on THONGTINSUDUNGTHUOC.MaThuoc = THUOC.MaThuoc where MaHoaDon = {invoiceID};", db.getConnection))
+                {
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dt.Load(dr);
+                    dr.Close();
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (db != null) { db.closeConnection(); }
+            }
+            return dt;
+        }
+
+        public static DataTable getServiceOfInvoice(int invoiceID)
+        {
+            DataTable dt = new DataTable();
+            Database db = null;
+            try
+            {
+                db = new Database();
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand($"select * from THONGTINDICHVU join DICHVU on THONGTINDICHVU.MaDichVu = DICHVU.MaDichVu\r\njoin NHANVIEN on THONGTINDICHVU.MaNhanVien = NHANVIEN.MaNhanVien\r\n where MaHoaDon = {invoiceID};", db.getConnection))
+                {
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    dt.Load(dr);
+                    dr.Close();
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                if (db != null) { db.closeConnection(); }
+            }
+            return dt;
+        }
     }
 }
