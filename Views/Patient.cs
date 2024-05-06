@@ -4,6 +4,8 @@ using NhaKhoaCuoiKy.Models;
 using NhaKhoaCuoiKy.Views.Service;
 using NhaKhoaCuoiKy.Views.PatientForm;
 using System.Data;
+using System.Drawing.Printing;
+using System.Windows.Forms;
 
 namespace NhaKhoaCuoiKy.Views
 {
@@ -200,28 +202,103 @@ namespace NhaKhoaCuoiKy.Views
 
         private void data_benhNhan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int patienID = Convert.ToInt32(data_benhNhan.Rows[e.RowIndex].Cells[0].Value);
+            int patientID = Convert.ToInt32(data_benhNhan.Rows[e.RowIndex].Cells[0].Value);
             if (data_benhNhan.Columns[e.ColumnIndex].Name == "col_btn_addRecord")
-            {                
-                mainForm.openChildFormHaveData(new AddNewRecord(patienID, userAccount));
+            {
+                mainForm.openChildFormHaveData(new AddNewRecord(patientID, userAccount));
             }
             if (data_benhNhan.Columns[e.ColumnIndex].Name == "col_btn_Info")
             {
-                loadForm(new EditPatient(patienID, this));
+                loadForm(new EditPatient(patientID, this));
             }
             if (data_benhNhan.Columns[e.ColumnIndex].Name == "col_btn_invoice")
             {
-                mainForm.openChildFormHaveData(new AddInvoice(patienID, mainForm));
+                mainForm.openChildFormHaveData(new AddInvoice(patientID, mainForm));
             }
-            if(data_benhNhan.Columns[e.ColumnIndex].Name == "col_btn_history")
+            if (data_benhNhan.Columns[e.ColumnIndex].Name == "col_btn_history")
             {
-
+                mainForm.openChildFormHaveData(new HistoryForm(patientID, mainForm));
             }
         }
 
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_print_Click(object sender, EventArgs e)
+        {
+            printInvoice();
+        }
+
+        void printInvoice()
+        {
+            PrintDialog pd = new PrintDialog();
+            PrintDocument doc = new PrintDocument();
+            pd.Document = doc;
+            doc.PrintPage += Doc_PrintPage;
+            if (pd.ShowDialog() == DialogResult.OK)
+            {
+                doc.Print();
+            }
+        }
+
+        void Doc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            // Define the dimensions and position of the rectangle
+            int x = 0; // X-coordinate
+            int y = 0; // Y-coordinate
+
+
+            // Draw the text onto the print page
+            e.Graphics.DrawString("Danh sách bệnh nhân", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(330, 20));
+            e.Graphics.DrawString($"Ngày in: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}", new Font("Times New Roman", 12), Brushes.Black, new Point(30, 125));
+
+            x = 30;
+            y = 150;
+            if (data_benhNhan.Rows.Count > 0)
+            {
+                DataGridViewRow headerRow = data_benhNhan.Rows[0];
+                foreach (DataGridViewCell headerCell in headerRow.Cells)
+                {
+                    if (headerCell.Visible && !(data_benhNhan.Columns[headerCell.ColumnIndex] is DataGridViewButtonColumn))
+                    {
+                        Rectangle headerRect = new Rectangle(x, y, headerCell.Size.Width, headerRow.Height); 
+                        if(headerCell.ColumnIndex == 1) 
+                        {
+                            headerRect = new Rectangle(x, y, 250, headerRow.Height);
+                        }
+                        e.Graphics.FillRectangle(Brushes.White, headerRect);
+                        e.Graphics.DrawRectangle(Pens.Black, headerRect);
+                        e.Graphics.DrawString(data_benhNhan.Columns[headerCell.ColumnIndex].HeaderText,
+                            data_benhNhan.Font, Brushes.Black, headerRect, new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                        x += headerRect.Width;
+                    }
+                }
+                y += data_benhNhan.Rows[0].Height;
+
+                foreach (DataGridViewRow dvr in data_benhNhan.Rows)
+                {
+                    x = 30;
+                    foreach (DataGridViewCell cell in dvr.Cells)
+                    {
+                        if (cell.Visible && !(data_benhNhan.Columns[cell.ColumnIndex] is DataGridViewButtonColumn))
+                        {
+                            Rectangle headerRect = new Rectangle(x, y, cell.Size.Width, cell.Size.Height);
+                            if (cell.ColumnIndex == 1)
+                            {
+                                headerRect = new Rectangle(x, y, 250, headerRow.Height);
+                            }
+                            e.Graphics.DrawRectangle(Pens.Black, headerRect);
+                            e.Graphics.DrawString(cell.FormattedValue.ToString(),
+                                data_benhNhan.Font, Brushes.Black, headerRect, new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                            x += headerRect.Width;
+                        }
+                    }
+                    y += dvr.Height;
+                }
+                y += data_benhNhan.Rows[0].Height;
+            }
         }
     }
 }

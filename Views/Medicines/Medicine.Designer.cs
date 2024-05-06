@@ -59,19 +59,17 @@
             button_themmoi = new Guna.UI2.WinForms.Guna2Button();
             guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             data_thuoc = new Guna.UI2.WinForms.Guna2DataGridView();
+            MaThuoc = new DataGridViewTextBoxColumn();
+            TenThuoc = new DataGridViewTextBoxColumn();
+            HuongDanSD = new DataGridViewTextBoxColumn();
+            GiaBan = new DataGridViewTextBoxColumn();
+            CongTy = new DataGridViewTextBoxColumn();
             btn_search = new Guna.UI2.WinForms.Guna2Button();
             tb_filter_search = new Guna.UI2.WinForms.Guna2TextBox();
             guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             cb_filter = new Guna.UI2.WinForms.Guna2ComboBox();
             label1 = new Label();
             guna2Button_save = new Guna.UI2.WinForms.Guna2Button();
-            MaThuoc = new DataGridViewTextBoxColumn();
-            TenThuoc = new DataGridViewTextBoxColumn();
-            HuongDanSD = new DataGridViewTextBoxColumn();
-            GiaBan = new DataGridViewTextBoxColumn();
-            CongTy = new DataGridViewTextBoxColumn();
-            SuaThuoc = new DataGridViewButtonColumn();
-            XoaThuoc = new DataGridViewButtonColumn();
             guna2GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)data_thuoc).BeginInit();
             guna2GroupBox1.SuspendLayout();
@@ -178,52 +176,43 @@
             // 
             // data_thuoc
             // 
-            data_thuoc.AllowUserToAddRows = false;
-            data_thuoc.AllowUserToDeleteRows = false;
-            data_thuoc.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 128, 255);
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             data_thuoc.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(17, 34, 71);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(17, 34, 71);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             data_thuoc.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            data_thuoc.ColumnHeadersHeight = 46;
+            data_thuoc.ColumnHeadersHeight = 42;
             data_thuoc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            data_thuoc.Columns.AddRange(new DataGridViewColumn[] { MaThuoc, TenThuoc, HuongDanSD, GiaBan, CongTy, SuaThuoc, XoaThuoc });
+            data_thuoc.Columns.AddRange(new DataGridViewColumn[] { MaThuoc, TenThuoc, HuongDanSD, GiaBan, CongTy });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = Color.Transparent;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(128, 128, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             data_thuoc.DefaultCellStyle = dataGridViewCellStyle3;
             data_thuoc.GridColor = Color.FromArgb(231, 229, 255);
-            data_thuoc.Location = new Point(25, 60);
+            data_thuoc.Location = new Point(25, 73);
             data_thuoc.Name = "data_thuoc";
-            data_thuoc.ReadOnly = true;
-            data_thuoc.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
             dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             data_thuoc.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             data_thuoc.RowHeadersVisible = false;
-            data_thuoc.RowHeadersWidth = 55;
+            data_thuoc.RowHeadersWidth = 51;
             data_thuoc.RowTemplate.Height = 29;
-            data_thuoc.Size = new Size(1062, 414);
-            data_thuoc.TabIndex = 5;
+            data_thuoc.Size = new Size(1054, 409);
+            data_thuoc.TabIndex = 4;
             data_thuoc.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             data_thuoc.ThemeStyle.AlternatingRowsStyle.Font = null;
             data_thuoc.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
@@ -236,8 +225,8 @@
             data_thuoc.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             data_thuoc.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             data_thuoc.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            data_thuoc.ThemeStyle.HeaderStyle.Height = 46;
-            data_thuoc.ThemeStyle.ReadOnly = true;
+            data_thuoc.ThemeStyle.HeaderStyle.Height = 42;
+            data_thuoc.ThemeStyle.ReadOnly = false;
             data_thuoc.ThemeStyle.RowsStyle.BackColor = Color.White;
             data_thuoc.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             data_thuoc.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -245,8 +234,36 @@
             data_thuoc.ThemeStyle.RowsStyle.Height = 29;
             data_thuoc.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             data_thuoc.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            data_thuoc.CellContentClick += data_thuoc_CellContentClick;
-            data_thuoc.SelectionChanged += data_thuoc_SelectionChanged;
+            // 
+            // MaThuoc
+            // 
+            MaThuoc.HeaderText = "Mã Thuốc";
+            MaThuoc.MinimumWidth = 6;
+            MaThuoc.Name = "MaThuoc";
+            // 
+            // TenThuoc
+            // 
+            TenThuoc.HeaderText = "Tên Thuốc";
+            TenThuoc.MinimumWidth = 6;
+            TenThuoc.Name = "TenThuoc";
+            // 
+            // HuongDanSD
+            // 
+            HuongDanSD.HeaderText = "Hướng Dẫn Sử Dụng";
+            HuongDanSD.MinimumWidth = 6;
+            HuongDanSD.Name = "HuongDanSD";
+            // 
+            // GiaBan
+            // 
+            GiaBan.HeaderText = "Giá Bán";
+            GiaBan.MinimumWidth = 6;
+            GiaBan.Name = "GiaBan";
+            // 
+            // CongTy
+            // 
+            CongTy.HeaderText = "Công Ty";
+            CongTy.MinimumWidth = 6;
+            CongTy.Name = "CongTy";
             // 
             // btn_search
             // 
@@ -358,61 +375,6 @@
             guna2Button_save.TabIndex = 10;
             guna2Button_save.Text = "Lưu";
             // 
-            // MaThuoc
-            // 
-            MaThuoc.HeaderText = "Mã Thuốc";
-            MaThuoc.MinimumWidth = 6;
-            MaThuoc.Name = "MaThuoc";
-            MaThuoc.ReadOnly = true;
-            // 
-            // TenThuoc
-            // 
-            TenThuoc.HeaderText = "Tên Thuốc";
-            TenThuoc.MinimumWidth = 6;
-            TenThuoc.Name = "TenThuoc";
-            TenThuoc.ReadOnly = true;
-            // 
-            // HuongDanSD
-            // 
-            HuongDanSD.HeaderText = "Hướng Dẫn Sử Dụng";
-            HuongDanSD.MinimumWidth = 6;
-            HuongDanSD.Name = "HuongDanSD";
-            HuongDanSD.ReadOnly = true;
-            // 
-            // GiaBan
-            // 
-            GiaBan.HeaderText = "Giá Bán";
-            GiaBan.MinimumWidth = 6;
-            GiaBan.Name = "GiaBan";
-            GiaBan.ReadOnly = true;
-            // 
-            // CongTy
-            // 
-            CongTy.HeaderText = "Công Ty";
-            CongTy.MinimumWidth = 6;
-            CongTy.Name = "CongTy";
-            CongTy.ReadOnly = true;
-            // 
-            // SuaThuoc
-            // 
-            SuaThuoc.HeaderText = "Sửa Thuốc";
-            SuaThuoc.MinimumWidth = 6;
-            SuaThuoc.Name = "SuaThuoc";
-            SuaThuoc.ReadOnly = true;
-            SuaThuoc.Text = "Xem";
-            SuaThuoc.UseColumnTextForButtonValue = true;
-            // 
-            // XoaThuoc
-            // 
-            XoaThuoc.HeaderText = "Xóa Thuốc";
-            XoaThuoc.MinimumWidth = 6;
-            XoaThuoc.Name = "XoaThuoc";
-            XoaThuoc.ReadOnly = true;
-            XoaThuoc.Resizable = DataGridViewTriState.True;
-            XoaThuoc.SortMode = DataGridViewColumnSortMode.Automatic;
-            XoaThuoc.Text = "Xóa";
-            XoaThuoc.UseColumnTextForButtonValue = true;
-            // 
             // Medicine
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -455,7 +417,5 @@
         private DataGridViewTextBoxColumn HuongDanSD;
         private DataGridViewTextBoxColumn GiaBan;
         private DataGridViewTextBoxColumn CongTy;
-        private DataGridViewButtonColumn SuaThuoc;
-        private DataGridViewButtonColumn XoaThuoc;
     }
 }

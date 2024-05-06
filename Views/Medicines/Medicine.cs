@@ -30,7 +30,26 @@ namespace NhaKhoaCuoiKy.Views.Employee.Medicines
             this.userAccount = userAccount;
         }
 
-
+        void loadForm(Form form)
+        {
+            FormBackGround formBackGround = new FormBackGround(mainForm);
+            try
+            {
+                using (form)
+                {
+                    formBackGround.Owner = mainForm;
+                    formBackGround.Show();
+                    form.Owner = formBackGround;
+                    form.ShowDialog();
+                    formBackGround.Dispose();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void button_themmoi_Click(object sender, EventArgs e)
         {
@@ -95,99 +114,6 @@ namespace NhaKhoaCuoiKy.Views.Employee.Medicines
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void data_thuoc_SelectionChanged(object sender, EventArgs e)
-        {
-            if (data_thuoc.SelectedCells.Count > 0)
-            {
-                // Hiển thị tất cả các cell trong DataGridView
-                foreach (DataGridViewRow row in data_thuoc.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        cell.Style.ForeColor = Color.Black; // Đặt màu chữ thành màu mặc định
-                        cell.Style.BackColor = Color.White; // Đặt màu nền thành màu mặc định
-                    }
-                }
-            }
-            else
-            {
-                // Ẩn tất cả các cell trong DataGridView
-                foreach (DataGridViewRow row in data_thuoc.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        cell.Style.ForeColor = Color.White; // Đặt màu chữ thành màu nền (ẩn cell)
-                        cell.Style.BackColor = Color.White; // Đặt màu nền thành màu nền (ẩn cell)
-                    }
-                }
-            }
-        }
-
-        private void data_thuoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (data_thuoc.Columns[e.ColumnIndex].Name == "XoaThuoc")
-                {
-                    string medID = data_thuoc.SelectedRows[0].Cells["MaThuoc"].ToString();
-                    DialogResult dr = MessageBox.Show("Bạn chắc chắn xóa?", "Xóa", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    if (dr == DialogResult.Yes)
-                    {
-                        if (MedicineHelper.removeMedicine(medID))
-                        {
-                            MessageBox.Show("Xóa thành công", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            loadAllMedicine();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Xóa thất bại", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                if (data_thuoc.Columns[e.ColumnIndex].Name == "SuaThuoc")
-                {
-                    string medID = data_thuoc.SelectedRows[0].Cells["MaThuoc"].ToString();
-                    loadForm(new EditMedicine(this, medID));
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        public void loadAllMedicine()
-        {
-            try
-            {
-                DataTable dt = MedicineHelper.getAllMedicine();
-                loadMedicine(dt);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        void loadForm(Form form)
-        {
-            FormBackGround formBackGround = new FormBackGround(mainForm);
-            try
-            {
-                using (form)
-                {
-                    formBackGround.Owner = mainForm;
-                    formBackGround.Show();
-                    form.Owner = formBackGround;
-                    form.ShowDialog();
-                    formBackGround.Dispose();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

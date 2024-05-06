@@ -94,7 +94,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
 
         }
 
-        public void loadGuard(DataTable dt)
+        private void loadGuard(DataTable dt)
         {
             // Clear existing rows in data_baoVe DataTable
             data_baoVe.Rows.Clear();
@@ -251,88 +251,6 @@ namespace NhaKhoaCuoiKy.Views.Employee
             else
             {
                 MessageBox.Show("Vui lòng chọn một dòng để xóa.");
-            }
-        }
-
-        private void data_baoVe_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (data_baoVe.Columns[e.ColumnIndex].Name == "HanhDong")
-                {
-                    int guardId = Convert.ToInt32(data_baoVe.SelectedRows[0].Cells["MaBV"].Value);
-                    DialogResult dr = MessageBox.Show("Bạn chắc chắn xóa?", "Xóa", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    if (dr == DialogResult.Yes)
-                    {
-                        if (EmployeeHelper.removeGuard(guardId))
-                        {
-                            MessageBox.Show("Xóa thành công", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            loadAllGuard();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Xóa thất bại", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                if (data_baoVe.Columns[e.ColumnIndex].Name == "ThongTin")
-                {
-                    int guardId = Convert.ToInt32(data_baoVe.SelectedRows[0].Cells["MaBV"].Value);
-                    loadForm(new EditGuard(this, guardId));
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        void loadForm(Form form)
-        {
-            FormBackGround formBackGround = new FormBackGround(mainForm);
-            try
-            {
-                using (form)
-                {
-                    formBackGround.Owner = mainForm;
-                    formBackGround.Show();
-                    form.Owner = formBackGround;
-                    form.ShowDialog();
-                    formBackGround.Dispose();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void data_baoVe_SelectionChanged(object sender, EventArgs e)
-        {
-            if (data_baoVe.SelectedCells.Count > 0)
-            {
-                // Hiển thị tất cả các cell trong DataGridView
-                foreach (DataGridViewRow row in data_baoVe.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        cell.Style.ForeColor = Color.Black; // Đặt màu chữ thành màu mặc định
-                        cell.Style.BackColor = Color.White; // Đặt màu nền thành màu mặc định
-                    }
-                }
-            }
-            else
-            {
-                // Ẩn tất cả các cell trong DataGridView
-                foreach (DataGridViewRow row in data_baoVe.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        cell.Style.ForeColor = Color.White; // Đặt màu chữ thành màu nền (ẩn cell)
-                        cell.Style.BackColor = Color.White; // Đặt màu nền thành màu nền (ẩn cell)
-                    }
-                }
             }
         }
     }

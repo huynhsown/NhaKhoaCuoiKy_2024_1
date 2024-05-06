@@ -47,18 +47,11 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             cb_filter = new Guna.UI2.WinForms.Guna2ComboBox();
             btn_search = new Guna.UI2.WinForms.Guna2Button();
             tb_filter_search = new Guna.UI2.WinForms.Guna2TextBox();
             guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             data_benhNhan = new Guna.UI2.WinForms.Guna2DataGridView();
-            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            panel1 = new Panel();
-            btn_refresh = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button_save = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button_print = new Guna.UI2.WinForms.Guna2Button();
             MaBenhNhan = new DataGridViewTextBoxColumn();
             HoTen = new DataGridViewTextBoxColumn();
             SoDienThoai = new DataGridViewTextBoxColumn();
@@ -69,6 +62,10 @@
             col_btn_invoice = new DataGridViewButtonColumn();
             col_btn_Info = new DataGridViewButtonColumn();
             col_btn_history = new DataGridViewButtonColumn();
+            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            panel1 = new Panel();
+            btn_refresh = new Guna.UI2.WinForms.Guna2Button();
+            btn_print = new Guna.UI2.WinForms.Guna2Button();
             guna2GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)data_benhNhan).BeginInit();
             panel1.SuspendLayout();
@@ -224,102 +221,6 @@
             data_benhNhan.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             data_benhNhan.CellContentClick += data_benhNhan_CellContentClick;
             // 
-            // guna2Button2
-            // 
-            guna2Button2.BorderRadius = 5;
-            guna2Button2.CustomizableEdges = customizableEdges7;
-            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button2.FillColor = Color.FromArgb(17, 34, 71);
-            guna2Button2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2Button2.ForeColor = Color.White;
-            guna2Button2.Image = Properties.Resources.icons8_add_new_64;
-            guna2Button2.ImageAlign = HorizontalAlignment.Left;
-            guna2Button2.Location = new Point(35, 18);
-            guna2Button2.Name = "guna2Button2";
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Button2.Size = new Size(154, 36);
-            guna2Button2.TabIndex = 3;
-            guna2Button2.Text = "Thêm mới";
-            guna2Button2.Click += guna2Button2_Click;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(btn_refresh);
-            panel1.Controls.Add(guna2Button_save);
-            panel1.Controls.Add(guna2Button_print);
-            panel1.Controls.Add(btn_search);
-            panel1.Controls.Add(guna2GroupBox2);
-            panel1.Controls.Add(tb_filter_search);
-            panel1.Controls.Add(cb_filter);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1214, 806);
-            panel1.TabIndex = 4;
-            // 
-            // btn_refresh
-            // 
-            btn_refresh.BorderRadius = 5;
-            btn_refresh.CustomizableEdges = customizableEdges11;
-            btn_refresh.DisabledState.BorderColor = Color.DarkGray;
-            btn_refresh.DisabledState.CustomBorderColor = Color.DarkGray;
-            btn_refresh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btn_refresh.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btn_refresh.FillColor = Color.FromArgb(17, 34, 71);
-            btn_refresh.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btn_refresh.ForeColor = Color.White;
-            btn_refresh.Image = (Image)resources.GetObject("btn_refresh.Image");
-            btn_refresh.ImageAlign = HorizontalAlignment.Left;
-            btn_refresh.Location = new Point(696, 17);
-            btn_refresh.Name = "btn_refresh";
-            btn_refresh.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            btn_refresh.Size = new Size(153, 36);
-            btn_refresh.TabIndex = 22;
-            btn_refresh.Text = "Làm mới";
-            // 
-            // guna2Button_save
-            // 
-            guna2Button_save.BorderRadius = 5;
-            guna2Button_save.CustomizableEdges = customizableEdges13;
-            guna2Button_save.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button_save.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button_save.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button_save.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button_save.FillColor = Color.FromArgb(17, 34, 71);
-            guna2Button_save.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2Button_save.ForeColor = Color.White;
-            guna2Button_save.Image = (Image)resources.GetObject("guna2Button_save.Image");
-            guna2Button_save.ImageAlign = HorizontalAlignment.Left;
-            guna2Button_save.Location = new Point(1045, 17);
-            guna2Button_save.Name = "guna2Button_save";
-            guna2Button_save.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2Button_save.Size = new Size(144, 36);
-            guna2Button_save.TabIndex = 20;
-            guna2Button_save.Text = "Lưu";
-            // 
-            // guna2Button_print
-            // 
-            guna2Button_print.BorderRadius = 5;
-            guna2Button_print.CustomizableEdges = customizableEdges15;
-            guna2Button_print.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button_print.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button_print.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button_print.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button_print.FillColor = Color.FromArgb(17, 34, 71);
-            guna2Button_print.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2Button_print.ForeColor = Color.White;
-            guna2Button_print.Image = (Image)resources.GetObject("guna2Button_print.Image");
-            guna2Button_print.ImageAlign = HorizontalAlignment.Left;
-            guna2Button_print.Location = new Point(869, 17);
-            guna2Button_print.Name = "guna2Button_print";
-            guna2Button_print.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            guna2Button_print.Size = new Size(154, 36);
-            guna2Button_print.TabIndex = 21;
-            guna2Button_print.Text = "In";
-            // 
             // MaBenhNhan
             // 
             MaBenhNhan.HeaderText = "Mã BN";
@@ -403,6 +304,82 @@
             col_btn_history.Text = "Xem";
             col_btn_history.UseColumnTextForButtonValue = true;
             // 
+            // guna2Button2
+            // 
+            guna2Button2.BorderRadius = 5;
+            guna2Button2.CustomizableEdges = customizableEdges7;
+            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button2.FillColor = Color.FromArgb(17, 34, 71);
+            guna2Button2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2Button2.ForeColor = Color.White;
+            guna2Button2.Image = Properties.Resources.icons8_add_new_64;
+            guna2Button2.ImageAlign = HorizontalAlignment.Left;
+            guna2Button2.Location = new Point(35, 18);
+            guna2Button2.Name = "guna2Button2";
+            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2Button2.Size = new Size(154, 36);
+            guna2Button2.TabIndex = 3;
+            guna2Button2.Text = "Thêm mới";
+            guna2Button2.Click += guna2Button2_Click;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(btn_refresh);
+            panel1.Controls.Add(btn_print);
+            panel1.Controls.Add(btn_search);
+            panel1.Controls.Add(guna2GroupBox2);
+            panel1.Controls.Add(tb_filter_search);
+            panel1.Controls.Add(cb_filter);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1214, 806);
+            panel1.TabIndex = 4;
+            // 
+            // btn_refresh
+            // 
+            btn_refresh.BorderRadius = 5;
+            btn_refresh.CustomizableEdges = customizableEdges11;
+            btn_refresh.DisabledState.BorderColor = Color.DarkGray;
+            btn_refresh.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_refresh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_refresh.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_refresh.FillColor = Color.FromArgb(17, 34, 71);
+            btn_refresh.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_refresh.ForeColor = Color.White;
+            btn_refresh.Image = (Image)resources.GetObject("btn_refresh.Image");
+            btn_refresh.ImageAlign = HorizontalAlignment.Left;
+            btn_refresh.Location = new Point(696, 17);
+            btn_refresh.Name = "btn_refresh";
+            btn_refresh.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btn_refresh.Size = new Size(153, 36);
+            btn_refresh.TabIndex = 22;
+            btn_refresh.Text = "Làm mới";
+            // 
+            // btn_print
+            // 
+            btn_print.BorderRadius = 5;
+            btn_print.CustomizableEdges = customizableEdges13;
+            btn_print.DisabledState.BorderColor = Color.DarkGray;
+            btn_print.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_print.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_print.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_print.FillColor = Color.FromArgb(17, 34, 71);
+            btn_print.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_print.ForeColor = Color.White;
+            btn_print.Image = (Image)resources.GetObject("btn_print.Image");
+            btn_print.ImageAlign = HorizontalAlignment.Left;
+            btn_print.Location = new Point(869, 17);
+            btn_print.Name = "btn_print";
+            btn_print.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btn_print.Size = new Size(154, 36);
+            btn_print.TabIndex = 21;
+            btn_print.Text = "In";
+            btn_print.Click += btn_print_Click;
+            // 
             // Patient
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -429,7 +406,7 @@
         private Guna.UI2.WinForms.Guna2DataGridView data_benhNhan;
         private Guna.UI2.WinForms.Guna2Button btn_refresh;
         private Guna.UI2.WinForms.Guna2Button guna2Button_save;
-        private Guna.UI2.WinForms.Guna2Button guna2Button_print;
+        private Guna.UI2.WinForms.Guna2Button btn_print;
         private DataGridViewTextBoxColumn MaBenhNhan;
         private DataGridViewTextBoxColumn HoTen;
         private DataGridViewTextBoxColumn SoDienThoai;

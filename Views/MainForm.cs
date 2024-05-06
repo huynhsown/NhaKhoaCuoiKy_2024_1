@@ -4,8 +4,6 @@ using NhaKhoaCuoiKy.Views.Employee;
 using NhaKhoaCuoiKy.Views.Employee.Medicines;
 using NhaKhoaCuoiKy.Views.Appointment;
 using NhaKhoaCuoiKy.Views.Service;
-using NhaKhoaCuoiKy.Views.QualityEvaluation;
-using NhaKhoaCuoiKy.Views.Revenues;
 using NhaKhoaCuoiKy.Models;
 using NhaKhoaCuoiKy.Views.LogIn;
 using System.Text;
@@ -30,12 +28,9 @@ namespace NhaKhoaCuoiKy.Views
         private Guard guard = new Guard();
         private Nurse nurse = new Nurse();
         private Medicine medicine = new Medicine();
+        private UserManagement userManagement;
 
         private AppointMent newAppointment;
-
-        private Evaluation evaluation = new Evaluation();
-        private Revenue revenue = new Revenue();
-        private HieuSuatLamViec hslv = new HieuSuatLamViec();
         private void MainForm_Load(object sender, EventArgs e)
         {
             panel_btn_employee.AutoSize = true;
@@ -74,6 +69,7 @@ namespace NhaKhoaCuoiKy.Views
             childForm.Show();
         }
 
+        #region View
         private void btn_home_Click(object sender, EventArgs e)
         {
             closeAllPanel();
@@ -208,7 +204,8 @@ namespace NhaKhoaCuoiKy.Views
             if (userAccount.decentralization == 1)
             {
                 SetAppointment sa = new SetAppointment(userAccount.employeeID, this);
-
+                sa.btn_back.Visible = false;
+                sa.btn_back.Enabled = false;
                 closeAllPanel();
                 openChildForm(sa);
                 return;
@@ -216,29 +213,6 @@ namespace NhaKhoaCuoiKy.Views
             closeAllPanel();
             newAppointment?.Close();
             openChildForm(newAppointment = new AppointMent(this));
-        }
-
-        private void btn_danhgia_Click(object sender, EventArgs e)
-        {
-            closeAllPanel();
-            evaluation?.Close();
-            openChildForm(evaluation = new Evaluation(this));
-        }
-
-        private void btn_doanhthu_Click(object sender, EventArgs e)
-        {
-            closeAllPanel();
-            revenue?.Close();
-            openChildForm(revenue = new Revenue(this));
-        }
-
-
-
-        private void btn_hslv_Click(object sender, EventArgs e)
-        {
-            closeAllPanel();
-            hslv?.Close();
-            openChildForm(hslv = new HieuSuatLamViec(this));
         }
 
         private void btn_logout_MouseEnter(object sender, EventArgs e)
@@ -258,5 +232,16 @@ namespace NhaKhoaCuoiKy.Views
             loginForm.removeInfoWhenLogout();
             loginForm.Show();
         }
+
+        private void btn_user_Click(object sender, EventArgs e)
+        {
+            if (userAccount.decentralization == 0)
+            {
+                closeAllPanel();
+                userManagement?.Close();
+                openChildForm(userManagement = new UserManagement(this, userAccount));
+            }
+        }
+        #endregion
     }
 }

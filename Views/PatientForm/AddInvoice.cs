@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace NhaKhoaCuoiKy.Views.PatientForm
 {
@@ -18,11 +19,59 @@ namespace NhaKhoaCuoiKy.Views.PatientForm
         int doctor_id;
         int invoiceID = 0;
         MainForm mainForm;
+        bool readOnly = false;
         public AddInvoice(int patientID, MainForm mainForm)
         {
             InitializeComponent();
             this.patientID = patientID;
             this.mainForm = mainForm;
+        }
+
+        public AddInvoice(int patientID, MainForm mainForm, bool readOnly, int invoiceID)
+        {
+            InitializeComponent();
+            this.patientID = patientID;
+            this.mainForm = mainForm;
+            this.readOnly = readOnly;
+            this.invoiceID = invoiceID;
+            btn_addMedicine.Visible = false;
+            btn_addService.Visible = false;
+            btn_save.Visible = false;
+            add_newInvoice.Visible = false;
+            btn_print.Location = btn_addMedicine.Location;
+            btn_print.Visible = true;
+            data_medicine.Columns["col_btn_delete"].Visible = false;
+            data_service.Columns["col_btn_delete_service"].Visible = false;
+            try
+            {
+                DataTable medicine_tb = PatientHelper.getMedicineOfInvoice(invoiceID);
+                foreach(DataRow dr in medicine_tb.Rows)
+                {
+                    string medicineID = dr["MaThuoc"].ToString();
+                    string medicineName = dr["TenThuoc"].ToString();
+                    int amount = Convert.ToInt32(dr["SoLuong"]);
+                    int price = Convert.ToInt32(dr["GiaBan"]);
+                    int total_price = amount * price;
+                    data_medicine.Rows.Add(medicineID, medicineName, amount, total_price);
+                }
+                DataTable service_tb = PatientHelper.getServiceOfInvoice(invoiceID);
+                foreach(DataRow dr in service_tb.Rows)
+                {
+                    string serviceID = dr["MaDichVu"].ToString();
+                    string serviceName = dr["TenDichVu"].ToString();
+                    string employeeName = dr["HoVaTen"].ToString();
+                    int amount = Convert.ToInt32(dr["SoLuong"]);
+                    int warranty = Convert.ToInt32(dr["BaoHanh"]);
+                    int discount = Convert.ToInt32(dr["GiamGia"]);
+                    int price = Convert.ToInt32(dr["GiaDichVu"]);
+                    int total_price = (amount * price) / 100 *(100-discount);
+                    string plan = Convert.ToDateTime(dr["NgaySuDung"]).ToString("dd/MM/yyyy HH:mm");
+                    data_service.Rows.Add(serviceID, serviceName, employeeName, amount, "", warranty, total_price, plan);
+                }
+            }
+            catch(Exception ex){
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public AddInvoice(int patientID, MainForm mainForm, int doctor_id)

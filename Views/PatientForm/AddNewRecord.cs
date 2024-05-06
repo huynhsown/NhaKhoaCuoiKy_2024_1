@@ -20,11 +20,31 @@ namespace NhaKhoaCuoiKy.Views.PatientForm
         int recordID;
         UserModel userAccount;
         string nameOfUser = string.Empty;
+        bool readOnly = false;
+        DateTime dateOfRecord;
         public AddNewRecord(int patienID, UserModel userAccount)
         {
             InitializeComponent();
             this.patienID = patienID;
             this.userAccount = userAccount;
+        }
+
+        public AddNewRecord(int patienID, int recordID)
+        {
+            InitializeComponent();
+            readOnly = true;
+            this.patienID = patienID;
+            this.recordID = recordID;
+            tb_DentalDisease.Enabled = false;
+            tb_Diagnosis.Enabled = false;
+            tb_NextAppointment.Enabled = false;
+            tb_Result.Enabled = false;
+            tb_Symptoms.Enabled = false;
+            tb_TreatmentMethod.Enabled = false;
+            tb_OtherDisease.Enabled = false;
+            btn_createAppointment.Visible = false;
+            btn_print.Visible = true;
+            btn_print.Location = btn_createAppointment.Location;
         }
 
         private void btn_back_Click(object sender, EventArgs e)
@@ -49,15 +69,39 @@ namespace NhaKhoaCuoiKy.Views.PatientForm
             panel_plan.Location = new Point(21, 1435);
             panel_abstract.Location = new Point(21, 1850);
             loadPatientInfomation();
-            try
+
             {
-                DataTable dt = EmployeeHelper.getDoctorByID(userAccount.employeeID);
-                nameOfUser = dt.Rows[0]["HoVaTen"].ToString();
+                if (!readOnly)
+                {
+                    DataTable dt = EmployeeHelper.getDoctorByID(userAccount.employeeID);
+                    dateOfRecord = DateTime.Today;
+                    if (dt.Rows.Count == 0) return;
+                    nameOfUser = dt.Rows[0]["HoVaTen"].ToString();
+                    
+                }
+                else
+                {
+                    DataTable dt = PatientHelper.getRecordByID(recordID);
+                    string DentalDisease = dt.Rows[0]["BenhLyNhaKhoa"].ToString();
+                    string OtherDisease = dt.Rows[0]["BenhLyKhac"].ToString();
+                    string Symptoms = dt.Rows[0]["TrieuChung"].ToString();
+                    string Result = dt.Rows[0]["KetQua"].ToString();
+                    string Diagnosis = dt.Rows[0]["ChanDoan"].ToString();
+                    string TreatmentMethod = dt.Rows[0]["PhuongPhapDieuTri"].ToString();
+                    string NextAppointment = dt.Rows[0]["LichTrinhTiepTheo"].ToString();
+                    nameOfUser = dt.Rows[0]["HoVaTen"].ToString();
+                    label4.Text = $"Số lưu trữ: {recordID}";
+                    dateOfRecord = Convert.ToDateTime(dt.Rows[0]["NgayLapBenhAn"]);
+                    tb_DentalDisease.Text = DentalDisease;
+                    tb_OtherDisease.Text = OtherDisease;
+                    tb_Symptoms.Text = Symptoms;
+                    tb_Result.Text = Result;
+                    tb_Diagnosis.Text = Diagnosis;
+                    tb_TreatmentMethod.Text = TreatmentMethod;
+                    tb_NextAppointment.Text = NextAppointment;
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
 
         }
 
@@ -141,6 +185,7 @@ namespace NhaKhoaCuoiKy.Views.PatientForm
                     tb_Symptoms.Enabled = false;
                     tb_TreatmentMethod.Enabled = false;
                     tb_OtherDisease.Enabled = false;
+                    label4.Text = $"Số lưu trữ: {recordID}";
                 }
                 else
                 {

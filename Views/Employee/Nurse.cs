@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using NhaKhoaCuoiKy.Helpers;
-using NhaKhoaCuoiKy.Views.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -155,7 +154,7 @@ namespace NhaKhoaCuoiKy.Views.Employee
         {
             loadAllNurse();
         }
-        public void loadAllNurse()
+        private void loadAllNurse()
         {
             try
             {
@@ -254,87 +253,6 @@ namespace NhaKhoaCuoiKy.Views.Employee
             else
             {
                 MessageBox.Show("Vui lòng chọn một dòng để xóa.");
-            }
-        }
-
-        private void data_yTa_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (data_yTa.Columns[e.ColumnIndex].Name == "HanhDong")
-                {
-                    int doctorId = Convert.ToInt32(data_yTa.SelectedRows[0].Cells["MaYT"].Value);
-                    DialogResult dr = MessageBox.Show("Bạn chắc chắn xóa?", "Xóa", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    if (dr == DialogResult.Yes)
-                    {
-                        if (EmployeeHelper.removeNurse(doctorId))
-                        {
-                            MessageBox.Show("Xóa thành công", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            loadAllNurse();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Xóa thất bại", "Xóa", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-                if (data_yTa.Columns[e.ColumnIndex].Name == "ThongTin")
-                {
-                    int doctorId = Convert.ToInt32(data_yTa.SelectedRows[0].Cells["MaYT"].Value);
-                    loadForm(new EditNurse(this, doctorId));
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        void loadForm(Form form)
-        {
-            FormBackGround formBackGround = new FormBackGround(mainForm);
-            try
-            {
-                using (form)
-                {
-                    formBackGround.Owner = mainForm;
-                    formBackGround.Show();
-                    form.Owner = formBackGround;
-                    form.ShowDialog();
-                    formBackGround.Dispose();
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Đã xảy ra lỗi! Vui lòng thử lại.", "Thông báo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void data_yTa_SelectionChanged(object sender, EventArgs e)
-        {
-            if (data_yTa.SelectedCells.Count > 0)
-            {
-                // Hiển thị tất cả các cell trong DataGridView
-                foreach (DataGridViewRow row in data_yTa.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        cell.Style.ForeColor = Color.Black; // Đặt màu chữ thành màu mặc định
-                        cell.Style.BackColor = Color.White; // Đặt màu nền thành màu mặc định
-                    }
-                }
-            }
-            else
-            {
-                // Ẩn tất cả các cell trong DataGridView
-                foreach (DataGridViewRow row in data_yTa.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        cell.Style.ForeColor = Color.White; // Đặt màu chữ thành màu nền (ẩn cell)
-                        cell.Style.BackColor = Color.White; // Đặt màu nền thành màu nền (ẩn cell)
-                    }
-                }
             }
         }
     }
