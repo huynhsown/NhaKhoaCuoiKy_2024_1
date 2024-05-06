@@ -1,0 +1,8 @@
+CREATE PROCEDURE [dbo].[getMedicineByID]
+	@MaThuoc NVARCHAR(50) OUTPUT
+AS
+BEGIN
+	SELECT * FROM THUOC 
+	WHERE MaThuoc = @MaThuoc
+	RETURN 1;
+END

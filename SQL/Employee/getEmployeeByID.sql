@@ -1,0 +1,7 @@
+CREATE PROCEDURE [dbo].[getEmployeeByID]
+	@MaNhanVien INT OUTPUT
+AS
+BEGIN
+	SELECT * FROM NHANVIEN WHERE MaNhanVien = @MaNhanVien;
+	RETURN 1;
+END

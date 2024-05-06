@@ -1,0 +1,9 @@
+USE NHAKHOA
+GO
+CREATE PROCEDURE [dbo].[getCategoryByID]
+	@MaLoaiDichVu NVARCHAR(MAX)
+AS
+BEGIN
+	SELECT * FROM [dbo].[LOAIDICHVU] WHERE MaLoaiDichVu = @MaLoaiDichVu;
+	RETURN 1;
+END

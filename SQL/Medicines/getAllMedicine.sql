@@ -1,0 +1,6 @@
+CREATE PROCEDURE [dbo].[getAllMedicine]
+AS
+BEGIN
+	SELECT * FROM THUOC
+	RETURN 1;
+END

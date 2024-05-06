@@ -1,0 +1,9 @@
+CREATE PROCEDURE [dbo].[getNurseByName]
+	@HoVaTen VARCHAR(255)
+AS
+BEGIN
+	SELECT * FROM NHANVIEN
+	INNER JOIN YTA ON NHANVIEN.MaNhanVien = YTA.MaNhanVien
+	WHERE HoVaTen LIKE '%' + @HoVaTen + '%';
+	RETURN 0;
+END

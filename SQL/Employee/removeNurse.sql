@@ -1,0 +1,8 @@
+CREATE PROCEDURE [dbo].[removeNurse]
+	@MaNhanVien INT
+AS
+BEGIN
+	DELETE FROM NHANVIEN WHERE MaNhanVien = @MaNhanVien;
+	DELETE FROM YTA WHERE MaNhanVien = @MaNhanVien;
+	RETURN 1;
+END

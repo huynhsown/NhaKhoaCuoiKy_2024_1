@@ -1,0 +1,8 @@
+USE NHAKHOA
+GO
+CREATE PROCEDURE [dbo].[getAllService]
+AS
+BEGIN
+	SELECT * FROM [dbo].[DICHVU];
+	RETURN 1;
+END

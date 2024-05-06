@@ -1,0 +1,9 @@
+CREATE PROCEDURE [dbo].[getDoctorByPhoneNum]
+	@SoDienThoai VARCHAR(50)
+AS
+BEGIN
+	SELECT * FROM NHANVIEN
+	INNER JOIN BACSI ON NHANVIEN.MaNhanVien = BACSI.MaNhanVien
+	WHERE SoDienThoai = @SoDienThoai;
+	RETURN 1;
+END

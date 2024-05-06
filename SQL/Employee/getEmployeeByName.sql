@@ -1,0 +1,8 @@
+CREATE PROCEDURE [dbo].[getEmployeeByName]
+	@HoVaTen VARCHAR(255)
+AS
+BEGIN
+	SELECT * FROM NHANVIEN
+	WHERE HoVaTen LIKE '%' + @HoVaTen + '%';
+	RETURN 1;
+END
