@@ -48,6 +48,13 @@ namespace NhaKhoaCuoiKy.Views
                 btn_user.Visible = false;
                 btn_doanhthu.Visible = false;
                 btn_hslv.Visible = false;
+                if(userAccount.decentralization == 3)
+                {
+                    btn_appointment.Visible = false;
+                    btn_danhgia.Visible = false;
+                    btn_patient.Visible = false;
+                    btn_medicine.Visible = false;
+                }
             }
         }
 

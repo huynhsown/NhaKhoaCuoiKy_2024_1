@@ -102,11 +102,11 @@ namespace NhaKhoaCuoiKy.Views.Employee
                 int salary = int.Parse(tb_tienluong.Text);
                 if (rdb_male.Checked)
                 {
-                    gender = "nam";
+                    gender = "Nam";
                 }
                 else if (rdb_female.Checked)
                 {
-                    gender = "nu";
+                    gender = "Nữ";
                 }
                 MemoryStream ms = new MemoryStream();
                 pb_avt.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);

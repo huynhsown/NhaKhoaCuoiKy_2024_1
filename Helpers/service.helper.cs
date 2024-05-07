@@ -387,6 +387,32 @@ namespace NhaKhoaCuoiKy.Helpers
             return dt;
         }
 
+        public static DataTable getServiceByTitle(string title)
+        {
+            Database db = new Database();
+            DataTable dt = new DataTable();
+            try
+            {
+                db.openConnection();
+                using (SqlCommand cmd = new SqlCommand($"select * from DICHVU where TenDichVu LIKE '%{title}%'", db.getConnection))
+                {
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    dt.Load(reader);
+                    reader.Close();
+                }
+                db.closeConnection();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                db.closeConnection();
+            }
+            return dt;
+        }
+
         public static bool updateCategory(int id, string title)
         {
             Database db = new Database();

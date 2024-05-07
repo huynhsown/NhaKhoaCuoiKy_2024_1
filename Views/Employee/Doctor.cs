@@ -206,51 +206,67 @@ namespace NhaKhoaCuoiKy.Views.Employee
 
         private void guna2Button_print_Click(object sender, EventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-            PrintDocument printdoc = new PrintDocument();
-            printdoc.DocumentName = "Print Document";
-            printDialog.Document = printdoc;
-            printDialog.AllowSelection = true;
-            printDialog.AllowSomePages = true;
-
-            if (printDialog.ShowDialog() == DialogResult.OK) printdoc.Print();
+            printInvoice();
         }
 
-        private void guna2Button_save_Click_1(object sender, EventArgs e)
+        void printInvoice()
         {
-            if (data_bacSi.Rows.Count == 0 || data_bacSi.Columns.Count == 0)
+            PrintDialog pd = new PrintDialog();
+            PrintDocument doc = new PrintDocument();
+            pd.Document = doc;
+            doc.PrintPage += Doc_PrintPage;
+            if (pd.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Không có dữ liệu để lưu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                doc.Print();
             }
+        }
 
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            saveFileDialog.Title = "Save File";
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        void Doc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            // Define the dimensions and position of the rectangle
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+
+            // Draw the text onto the print page
+            e.Graphics.DrawString("Danh sách bác sĩ", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(330, 20));
+            e.Graphics.DrawString("Sở y tê UTE", new Font("Times New Roman", 12), Brushes.Black, new Point(30, 20));
+            e.Graphics.DrawString("Nha khoa FS", new Font("Times New Roman", 12), Brushes.Black, new Point(30, 55));
+            e.Graphics.DrawString($"Ngày in: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}", new Font("Times New Roman", 12), Brushes.Black, new Point(600, 20));
+
+            int x = 30;
+            int y = 150;
+            if (data_bacSi.Rows.Count > 0)
             {
-                string path = saveFileDialog.FileName;
-
-                using (var writer = new StreamWriter(path))
+                DataGridViewRow headerRow = data_bacSi.Rows[0];
+                foreach (DataGridViewCell headerCell in headerRow.Cells)
                 {
-                    for (int i = 0; i < data_bacSi.Rows.Count; i++)
+                    if (headerCell.Visible && !(data_bacSi.Columns[headerCell.ColumnIndex].ValueType is DataGridViewButtonCell))
                     {
-                        for (int j = 0; j < data_bacSi.Columns.Count - 1; j++)
-                        {
-                            if (data_bacSi.Rows[i].Cells[j].Value != null)
-                            {
-                                writer.Write("\t" + data_bacSi.Rows[i].Cells[j].Value.ToString() + "\t" + "|");
-                            }
-                            else
-                            {
-                                writer.Write("\t" + "\t" + "|"); // Ghi một dấu cách nếu giá trị là null
-                            }
-                        }
-                        writer.WriteLine("");
-                        writer.WriteLine("--------------------------------------------------------------------------------------");
+                        Rectangle headerRect = new Rectangle(x, y, headerCell.Size.Width, headerCell.Size.Height);
+
+                        e.Graphics.FillRectangle(Brushes.White, headerRect);
+                        e.Graphics.DrawRectangle(Pens.Black, headerRect);
+                        e.Graphics.DrawString(data_bacSi.Columns[headerCell.ColumnIndex].HeaderText,
+                            data_bacSi.Font, Brushes.Black, headerRect, new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                        x += headerRect.Width;
                     }
+                }
+                y += data_bacSi.Rows[0].Height;
+
+                foreach (DataGridViewRow dvr in data_bacSi.Rows)
+                {
+                    x = 30;
+                    foreach (DataGridViewCell cell in dvr.Cells)
+                    {
+                        if (cell.Visible && data_bacSi.Columns[cell.ColumnIndex].Name != "col_btn_delete")
+                        {
+                            Rectangle headerRect = new Rectangle(x, y, cell.Size.Width, cell.Size.Height);
+                            e.Graphics.DrawRectangle(Pens.Black, headerRect);
+                            e.Graphics.DrawString(cell.FormattedValue.ToString(),
+                                data_bacSi.Font, Brushes.Black, headerRect, new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                            x += headerRect.Width;
+                        }
+                    }
+                    y += dvr.Height;
                 }
             }
         }

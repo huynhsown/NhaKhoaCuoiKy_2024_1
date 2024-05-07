@@ -49,16 +49,18 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             btn_category_refresh = new Guna.UI2.WinForms.Guna2Button();
             btn_add = new Guna.UI2.WinForms.Guna2Button();
@@ -72,8 +74,9 @@
             btn_search_category = new Guna.UI2.WinForms.Guna2Button();
             tb_category_search = new Guna.UI2.WinForms.Guna2TextBox();
             guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            cbb_service = new Guna.UI2.WinForms.Guna2ComboBox();
+            tb_search_service = new Guna.UI2.WinForms.Guna2TextBox();
+            btn_search_service = new Guna.UI2.WinForms.Guna2Button();
             data_category_items = new Guna.UI2.WinForms.Guna2DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
@@ -97,7 +100,7 @@
             guna2Button3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button3.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button3.FillColor = Color.FromArgb(17, 34, 71);
-            guna2Button3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2Button3.Font = new Font("Segoe UI", 9F);
             guna2Button3.ForeColor = Color.White;
             guna2Button3.Image = (Image)resources.GetObject("guna2Button3.Image");
             guna2Button3.ImageAlign = HorizontalAlignment.Left;
@@ -107,6 +110,7 @@
             guna2Button3.Size = new Size(130, 36);
             guna2Button3.TabIndex = 2;
             guna2Button3.Text = "In";
+            guna2Button3.Click += guna2Button3_Click;
             // 
             // btn_category_refresh
             // 
@@ -117,7 +121,7 @@
             btn_category_refresh.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_category_refresh.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_category_refresh.FillColor = Color.FromArgb(17, 34, 71);
-            btn_category_refresh.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_category_refresh.Font = new Font("Segoe UI", 9F);
             btn_category_refresh.ForeColor = Color.White;
             btn_category_refresh.Image = (Image)resources.GetObject("btn_category_refresh.Image");
             btn_category_refresh.ImageAlign = HorizontalAlignment.Left;
@@ -138,7 +142,7 @@
             btn_add.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_add.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_add.FillColor = Color.FromArgb(17, 34, 71);
-            btn_add.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_add.Font = new Font("Segoe UI", 9F);
             btn_add.ForeColor = Color.White;
             btn_add.Image = Properties.Resources.icons8_add_new_64;
             btn_add.ImageAlign = HorizontalAlignment.Left;
@@ -156,7 +160,7 @@
             data_loaiDichvu.AllowUserToDeleteRows = false;
             data_loaiDichvu.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(192, 192, 255);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
@@ -164,7 +168,7 @@
             data_loaiDichvu.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(17, 34, 71);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(17, 34, 71);
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -175,7 +179,7 @@
             data_loaiDichvu.Columns.AddRange(new DataGridViewColumn[] { MaBenhNhan, HoTen, col_category_Info, col_active });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle3.ForeColor = Color.Black;
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(192, 192, 255);
             dataGridViewCellStyle3.SelectionForeColor = Color.Black;
@@ -188,7 +192,7 @@
             data_loaiDichvu.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = Color.White;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
@@ -210,14 +214,14 @@
             data_loaiDichvu.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
             data_loaiDichvu.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
             data_loaiDichvu.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            data_loaiDichvu.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            data_loaiDichvu.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             data_loaiDichvu.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             data_loaiDichvu.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             data_loaiDichvu.ThemeStyle.HeaderStyle.Height = 46;
             data_loaiDichvu.ThemeStyle.ReadOnly = true;
             data_loaiDichvu.ThemeStyle.RowsStyle.BackColor = Color.White;
             data_loaiDichvu.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            data_loaiDichvu.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            data_loaiDichvu.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
             data_loaiDichvu.ThemeStyle.RowsStyle.ForeColor = Color.Transparent;
             data_loaiDichvu.ThemeStyle.RowsStyle.Height = 29;
             data_loaiDichvu.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
@@ -288,7 +292,7 @@
             cb_category_search.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_category_search.FocusedColor = Color.FromArgb(94, 148, 255);
             cb_category_search.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cb_category_search.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cb_category_search.Font = new Font("Segoe UI", 9F);
             cb_category_search.ForeColor = Color.FromArgb(68, 88, 112);
             cb_category_search.ItemHeight = 30;
             cb_category_search.Items.AddRange(new object[] { "Mã", "Loại dịch vụ" });
@@ -308,7 +312,7 @@
             btn_search_category.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_search_category.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_search_category.FillColor = Color.FromArgb(17, 34, 71);
-            btn_search_category.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_search_category.Font = new Font("Segoe UI", 9F);
             btn_search_category.ForeColor = Color.White;
             btn_search_category.Image = Properties.Resources.icons8_search_100;
             btn_search_category.ImageAlign = HorizontalAlignment.Left;
@@ -330,7 +334,7 @@
             tb_category_search.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             tb_category_search.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_category_search.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_category_search.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_category_search.Font = new Font("Segoe UI", 9F);
             tb_category_search.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_category_search.Location = new Point(176, 91);
             tb_category_search.Name = "tb_category_search";
@@ -345,8 +349,9 @@
             // guna2ShadowPanel1
             // 
             guna2ShadowPanel1.BackColor = Color.Transparent;
-            guna2ShadowPanel1.Controls.Add(guna2Button2);
-            guna2ShadowPanel1.Controls.Add(guna2TextBox1);
+            guna2ShadowPanel1.Controls.Add(cbb_service);
+            guna2ShadowPanel1.Controls.Add(tb_search_service);
+            guna2ShadowPanel1.Controls.Add(btn_search_service);
             guna2ShadowPanel1.Controls.Add(data_category_items);
             guna2ShadowPanel1.Controls.Add(guna2Button4);
             guna2ShadowPanel1.Controls.Add(btn_refesh_service);
@@ -359,45 +364,68 @@
             guna2ShadowPanel1.Size = new Size(574, 731);
             guna2ShadowPanel1.TabIndex = 7;
             // 
-            // guna2Button2
+            // cbb_service
             // 
-            guna2Button2.BorderRadius = 15;
-            guna2Button2.CustomizableEdges = customizableEdges13;
-            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button2.FillColor = Color.FromArgb(17, 34, 71);
-            guna2Button2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2Button2.ForeColor = Color.White;
-            guna2Button2.Image = Properties.Resources.icons8_search_100;
-            guna2Button2.ImageAlign = HorizontalAlignment.Left;
-            guna2Button2.Location = new Point(401, 91);
-            guna2Button2.Name = "guna2Button2";
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2Button2.Size = new Size(130, 36);
-            guna2Button2.TabIndex = 7;
-            guna2Button2.Text = "Tìm";
+            cbb_service.BackColor = Color.Transparent;
+            cbb_service.BorderColor = Color.Black;
+            cbb_service.CustomizableEdges = customizableEdges13;
+            cbb_service.DrawMode = DrawMode.OwnerDrawFixed;
+            cbb_service.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbb_service.FocusedColor = Color.FromArgb(94, 148, 255);
+            cbb_service.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cbb_service.Font = new Font("Segoe UI", 9F);
+            cbb_service.ForeColor = Color.FromArgb(68, 88, 112);
+            cbb_service.ItemHeight = 30;
+            cbb_service.Items.AddRange(new object[] { "Mã", "Dịch vụ" });
+            cbb_service.Location = new Point(40, 91);
+            cbb_service.Name = "cbb_service";
+            cbb_service.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            cbb_service.Size = new Size(130, 36);
+            cbb_service.StartIndex = 0;
+            cbb_service.TabIndex = 10;
             // 
-            // guna2TextBox1
+            // tb_search_service
             // 
-            guna2TextBox1.CustomizableEdges = customizableEdges15;
-            guna2TextBox1.DefaultText = "";
-            guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            guna2TextBox1.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            guna2TextBox1.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            guna2TextBox1.Location = new Point(160, 91);
-            guna2TextBox1.Name = "guna2TextBox1";
-            guna2TextBox1.PasswordChar = '\0';
-            guna2TextBox1.PlaceholderText = "";
-            guna2TextBox1.SelectedText = "";
-            guna2TextBox1.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            guna2TextBox1.Size = new Size(235, 36);
-            guna2TextBox1.TabIndex = 6;
+            tb_search_service.BorderColor = Color.Black;
+            tb_search_service.CustomizableEdges = customizableEdges15;
+            tb_search_service.DefaultText = "";
+            tb_search_service.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            tb_search_service.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            tb_search_service.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            tb_search_service.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            tb_search_service.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            tb_search_service.Font = new Font("Segoe UI", 9F);
+            tb_search_service.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            tb_search_service.Location = new Point(176, 91);
+            tb_search_service.Name = "tb_search_service";
+            tb_search_service.PasswordChar = '\0';
+            tb_search_service.PlaceholderForeColor = Color.Gray;
+            tb_search_service.PlaceholderText = "Nhập tìm kiếm";
+            tb_search_service.SelectedText = "";
+            tb_search_service.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            tb_search_service.Size = new Size(263, 36);
+            tb_search_service.TabIndex = 9;
+            // 
+            // btn_search_service
+            // 
+            btn_search_service.BorderRadius = 15;
+            btn_search_service.CustomizableEdges = customizableEdges17;
+            btn_search_service.DisabledState.BorderColor = Color.DarkGray;
+            btn_search_service.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_search_service.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_search_service.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_search_service.FillColor = Color.FromArgb(17, 34, 71);
+            btn_search_service.Font = new Font("Segoe UI", 9F);
+            btn_search_service.ForeColor = Color.White;
+            btn_search_service.Image = Properties.Resources.icons8_search_100;
+            btn_search_service.ImageAlign = HorizontalAlignment.Left;
+            btn_search_service.Location = new Point(445, 91);
+            btn_search_service.Name = "btn_search_service";
+            btn_search_service.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btn_search_service.Size = new Size(86, 36);
+            btn_search_service.TabIndex = 7;
+            btn_search_service.Text = "Tìm";
+            btn_search_service.Click += btn_search_service_Click;
             // 
             // data_category_items
             // 
@@ -405,7 +433,7 @@
             data_category_items.AllowUserToDeleteRows = false;
             data_category_items.AllowUserToResizeRows = false;
             dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle5.ForeColor = Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(192, 192, 255);
             dataGridViewCellStyle5.SelectionForeColor = Color.Black;
@@ -413,7 +441,7 @@
             data_category_items.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.FromArgb(17, 34, 71);
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle6.ForeColor = Color.White;
             dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(17, 34, 71);
             dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
@@ -424,7 +452,7 @@
             data_category_items.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, col_btn_info, col_active_item });
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = Color.White;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle7.ForeColor = Color.Black;
             dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(192, 192, 255);
             dataGridViewCellStyle7.SelectionForeColor = Color.Black;
@@ -437,7 +465,7 @@
             data_category_items.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = Color.White;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle8.SelectionBackColor = Color.White;
             dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
@@ -458,14 +486,14 @@
             data_category_items.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
             data_category_items.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
             data_category_items.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            data_category_items.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            data_category_items.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
             data_category_items.ThemeStyle.HeaderStyle.ForeColor = Color.White;
             data_category_items.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             data_category_items.ThemeStyle.HeaderStyle.Height = 46;
             data_category_items.ThemeStyle.ReadOnly = true;
             data_category_items.ThemeStyle.RowsStyle.BackColor = Color.White;
             data_category_items.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            data_category_items.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            data_category_items.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
             data_category_items.ThemeStyle.RowsStyle.ForeColor = Color.Transparent;
             data_category_items.ThemeStyle.RowsStyle.Height = 29;
             data_category_items.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
@@ -511,39 +539,40 @@
             // guna2Button4
             // 
             guna2Button4.BorderRadius = 15;
-            guna2Button4.CustomizableEdges = customizableEdges17;
+            guna2Button4.CustomizableEdges = customizableEdges19;
             guna2Button4.DisabledState.BorderColor = Color.DarkGray;
             guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2Button4.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             guna2Button4.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             guna2Button4.FillColor = Color.FromArgb(17, 34, 71);
-            guna2Button4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            guna2Button4.Font = new Font("Segoe UI", 9F);
             guna2Button4.ForeColor = Color.White;
             guna2Button4.Image = (Image)resources.GetObject("guna2Button4.Image");
             guna2Button4.ImageAlign = HorizontalAlignment.Left;
             guna2Button4.Location = new Point(401, 37);
             guna2Button4.Name = "guna2Button4";
-            guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges20;
             guna2Button4.Size = new Size(130, 36);
             guna2Button4.TabIndex = 2;
             guna2Button4.Text = "In";
+            guna2Button4.Click += guna2Button4_Click;
             // 
             // btn_refesh_service
             // 
             btn_refesh_service.BorderRadius = 15;
-            btn_refesh_service.CustomizableEdges = customizableEdges19;
+            btn_refesh_service.CustomizableEdges = customizableEdges21;
             btn_refesh_service.DisabledState.BorderColor = Color.DarkGray;
             btn_refesh_service.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_refesh_service.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_refesh_service.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_refesh_service.FillColor = Color.FromArgb(17, 34, 71);
-            btn_refesh_service.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_refesh_service.Font = new Font("Segoe UI", 9F);
             btn_refesh_service.ForeColor = Color.White;
             btn_refesh_service.Image = (Image)resources.GetObject("btn_refesh_service.Image");
             btn_refesh_service.ImageAlign = HorizontalAlignment.Left;
             btn_refesh_service.Location = new Point(226, 37);
             btn_refesh_service.Name = "btn_refesh_service";
-            btn_refesh_service.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btn_refesh_service.ShadowDecoration.CustomizableEdges = customizableEdges22;
             btn_refesh_service.Size = new Size(130, 36);
             btn_refesh_service.TabIndex = 1;
             btn_refesh_service.Text = "Làm mới";
@@ -552,19 +581,19 @@
             // btn_add_category_item
             // 
             btn_add_category_item.BorderRadius = 15;
-            btn_add_category_item.CustomizableEdges = customizableEdges21;
+            btn_add_category_item.CustomizableEdges = customizableEdges23;
             btn_add_category_item.DisabledState.BorderColor = Color.DarkGray;
             btn_add_category_item.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_add_category_item.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_add_category_item.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_add_category_item.FillColor = Color.FromArgb(17, 34, 71);
-            btn_add_category_item.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_add_category_item.Font = new Font("Segoe UI", 9F);
             btn_add_category_item.ForeColor = Color.White;
             btn_add_category_item.Image = Properties.Resources.icons8_add_new_64;
             btn_add_category_item.ImageAlign = HorizontalAlignment.Left;
             btn_add_category_item.Location = new Point(40, 37);
             btn_add_category_item.Name = "btn_add_category_item";
-            btn_add_category_item.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            btn_add_category_item.ShadowDecoration.CustomizableEdges = customizableEdges24;
             btn_add_category_item.Size = new Size(130, 36);
             btn_add_category_item.TabIndex = 0;
             btn_add_category_item.Text = "Thêm";
@@ -597,8 +626,7 @@
         private Guna.UI2.WinForms.Guna2TextBox tb_category_search;
         public Guna.UI2.WinForms.Guna2DataGridView data_loaiDichvu;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2Button btn_search_service;
         public Guna.UI2.WinForms.Guna2DataGridView data_category_items;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2Button btn_refesh_service;
@@ -612,5 +640,7 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewButtonColumn col_btn_info;
         private DataGridViewButtonColumn col_active_item;
+        private Guna.UI2.WinForms.Guna2ComboBox cbb_service;
+        private Guna.UI2.WinForms.Guna2TextBox tb_search_service;
     }
 }

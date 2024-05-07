@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -278,5 +279,151 @@ namespace NhaKhoaCuoiKy.Views.Service
                 loadCategory(ServiceHelper.getCategoryByTitle(tb_category_search.Text.Trim()));
             }
         }
+
+        private void btn_search_service_Click(object sender, EventArgs e)
+        {
+            if (cbb_service.SelectedIndex == 0)
+            {
+                if (!Int32.TryParse(tb_search_service.Text, out _))
+                {
+                    MessageBox.Show("Vui lòng nhập số", "Tìm kiếm dịch vụ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+                loadService(ServiceHelper.getServiceByID(Convert.ToInt32(tb_search_service.Text)));
+            }
+            else
+            {
+                loadService(ServiceHelper.getServiceByTitle(tb_search_service.Text.Trim()));
+            }
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            printInvoice();
+        }
+
+        void printInvoice()
+        {
+            PrintDialog pd = new PrintDialog();
+            PrintDocument doc = new PrintDocument();
+            pd.Document = doc;
+            doc.PrintPage += Doc_PrintPage;
+            if (pd.ShowDialog() == DialogResult.OK)
+            {
+                doc.Print();
+            }
+        }
+
+        void Doc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+
+            // Draw the text onto the print page
+            e.Graphics.DrawString("Danh sách loại dịch vụ", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(330, 20));
+            e.Graphics.DrawString("Sở y tê UTE", new Font("Times New Roman", 12), Brushes.Black, new Point(30, 20));
+            e.Graphics.DrawString("Nha khoa FS", new Font("Times New Roman", 12), Brushes.Black, new Point(30, 55));
+            e.Graphics.DrawString($"Ngày in: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}", new Font("Times New Roman", 12), Brushes.Black, new Point(600, 20));
+            int x = 30;
+            int y = 120;
+
+            if (data_loaiDichvu.Rows.Count > 0)
+            {
+                DataGridViewRow headerRow = data_category_items.Rows[0];
+                foreach (DataGridViewCell headerCell in headerRow.Cells)
+                {
+                    if (headerCell.Visible && data_loaiDichvu.Columns[headerCell.ColumnIndex].Name != "col_category_Info" && data_loaiDichvu.Columns[headerCell.ColumnIndex].Name != "col_active")
+                    {
+                        Rectangle headerRect = new Rectangle(x, y, 790 / 2, headerRow.Height);
+                        e.Graphics.FillRectangle(Brushes.White, headerRect);
+                        e.Graphics.DrawRectangle(Pens.Black, headerRect);
+                        e.Graphics.DrawString(data_loaiDichvu.Columns[headerCell.ColumnIndex].HeaderText,
+                            data_loaiDichvu.Font, Brushes.Black, headerRect, new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                        x += headerRect.Width;
+                    }
+                }
+                y += data_loaiDichvu.Rows[0].Height;
+
+                foreach (DataGridViewRow dvr in data_loaiDichvu.Rows)
+                {
+                    x = 30;
+                    foreach (DataGridViewCell cell in dvr.Cells)
+                    {
+                        if (cell.Visible && data_loaiDichvu.Columns[cell.ColumnIndex].Name != "col_category_Info" && data_loaiDichvu.Columns[cell.ColumnIndex].Name != "col_active")
+                        {
+                            Rectangle headerRect = new Rectangle(x, y, 790 / 2, cell.Size.Height);
+                            e.Graphics.DrawRectangle(Pens.Black, headerRect);
+                            e.Graphics.DrawString(cell.FormattedValue.ToString(),
+                                data_loaiDichvu.Font, Brushes.Black, headerRect, new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                            x += headerRect.Width;
+                        }
+                    }
+                    y += dvr.Height;
+                }
+            }
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            printInvoice_1();
+        }
+
+        void printInvoice_1()
+        {
+            PrintDialog pd = new PrintDialog();
+            PrintDocument doc = new PrintDocument();
+            pd.Document = doc;
+            doc.PrintPage += Doc_PrintPage_1;
+            if (pd.ShowDialog() == DialogResult.OK)
+            {
+                doc.Print();
+            }
+        }
+
+        void Doc_PrintPage_1(object sender, PrintPageEventArgs e)
+        {
+
+            // Draw the text onto the print page
+            e.Graphics.DrawString("Danh sách dịch vụ", new Font("Times New Roman", 20, FontStyle.Bold), Brushes.Black, new Point(330, 20));
+            e.Graphics.DrawString("Sở y tê UTE", new Font("Times New Roman", 12), Brushes.Black, new Point(30, 20));
+            e.Graphics.DrawString("Nha khoa FS", new Font("Times New Roman", 12), Brushes.Black, new Point(30, 55));
+            e.Graphics.DrawString($"Ngày in: {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}", new Font("Times New Roman", 12), Brushes.Black, new Point(600, 20));
+            int x = 30;
+            int y = 120;
+
+            if (data_category_items.Rows.Count > 0)
+            {
+                DataGridViewRow headerRow = data_category_items.Rows[0];
+                foreach (DataGridViewCell headerCell in headerRow.Cells)
+                {
+                    if (headerCell.Visible && data_category_items.Columns[headerCell.ColumnIndex].Name != "col_btn_info" && data_category_items.Columns[headerCell.ColumnIndex].Name != "col_active_item")
+                    {
+                        Rectangle headerRect = new Rectangle(x, y, 790 / 2, headerRow.Height);
+                        e.Graphics.FillRectangle(Brushes.White, headerRect);
+                        e.Graphics.DrawRectangle(Pens.Black, headerRect);
+                        e.Graphics.DrawString(data_category_items.Columns[headerCell.ColumnIndex].HeaderText,
+                            data_category_items.Font, Brushes.Black, headerRect, new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                        x += headerRect.Width;
+                    }
+                }
+                y += data_category_items.Rows[0].Height;
+
+                foreach (DataGridViewRow dvr in data_category_items.Rows)
+                {
+                    x = 30;
+                    foreach (DataGridViewCell cell in dvr.Cells)
+                    {
+                        if (cell.Visible && data_category_items.Columns[cell.ColumnIndex].Name != "col_btn_info" && data_category_items.Columns[cell.ColumnIndex].Name != "col_active_item")
+                        {
+                            Rectangle headerRect = new Rectangle(x, y, 790 / 2, cell.Size.Height);
+                            e.Graphics.DrawRectangle(Pens.Black, headerRect);
+                            e.Graphics.DrawString(cell.FormattedValue.ToString(),
+                                data_category_items.Font, Brushes.Black, headerRect, new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
+                            x += headerRect.Width;
+                        }
+                    }
+                    y += dvr.Height;
+                }
+            }
+        }
+
     }
 }

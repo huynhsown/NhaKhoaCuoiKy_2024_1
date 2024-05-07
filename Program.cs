@@ -2,6 +2,7 @@ using NhaKhoaCuoiKy.Views;
 using NhaKhoaCuoiKy.Views.Appointment;
 using NhaKhoaCuoiKy.Views.LogIn;
 using NhaKhoaCuoiKy.FaceRecognize;
+using NhaKhoaCuoiKy.ShiftSchedule;
 
 namespace NhaKhoaCuoiKy
 {

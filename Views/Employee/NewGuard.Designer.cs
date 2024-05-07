@@ -67,7 +67,6 @@
             label8 = new Label();
             pb_avt = new PictureBox();
             btn_add = new Guna.UI2.WinForms.Guna2Button();
-            rdb_other = new Guna.UI2.WinForms.Guna2RadioButton();
             rdb_female = new Guna.UI2.WinForms.Guna2RadioButton();
             rdb_male = new Guna.UI2.WinForms.Guna2RadioButton();
             label2 = new Label();
@@ -189,7 +188,7 @@
             tb_street.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_street.FillColor = Color.Gainsboro;
             tb_street.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_street.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_street.Font = new Font("Segoe UI", 9F);
             tb_street.ForeColor = Color.Black;
             tb_street.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_street.Location = new Point(129, 290);
@@ -212,7 +211,7 @@
             btn_uploadImg.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_uploadImg.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_uploadImg.FillColor = Color.FromArgb(17, 34, 71);
-            btn_uploadImg.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_uploadImg.Font = new Font("Segoe UI", 9F);
             btn_uploadImg.ForeColor = Color.White;
             btn_uploadImg.Location = new Point(347, 445);
             btn_uploadImg.Name = "btn_uploadImg";
@@ -253,7 +252,7 @@
             btn_add.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_add.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_add.FillColor = Color.FromArgb(17, 34, 71);
-            btn_add.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_add.Font = new Font("Segoe UI", 10F);
             btn_add.ForeColor = Color.White;
             btn_add.Location = new Point(344, 485);
             btn_add.Name = "btn_add";
@@ -263,24 +262,6 @@
             btn_add.Text = "Thêm";
             btn_add.Click += btn_add_Click_1;
             // 
-            // rdb_other
-            // 
-            rdb_other.AutoSize = true;
-            rdb_other.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
-            rdb_other.CheckedState.BorderThickness = 0;
-            rdb_other.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
-            rdb_other.CheckedState.InnerColor = Color.White;
-            rdb_other.CheckedState.InnerOffset = -4;
-            rdb_other.Location = new Point(485, 202);
-            rdb_other.Name = "rdb_other";
-            rdb_other.Size = new Size(62, 24);
-            rdb_other.TabIndex = 84;
-            rdb_other.Text = "Khác";
-            rdb_other.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
-            rdb_other.UncheckedState.BorderThickness = 2;
-            rdb_other.UncheckedState.FillColor = Color.Transparent;
-            rdb_other.UncheckedState.InnerColor = Color.Transparent;
-            // 
             // rdb_female
             // 
             rdb_female.AutoSize = true;
@@ -289,7 +270,7 @@
             rdb_female.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
             rdb_female.CheckedState.InnerColor = Color.White;
             rdb_female.CheckedState.InnerOffset = -4;
-            rdb_female.Location = new Point(415, 202);
+            rdb_female.Location = new Point(486, 202);
             rdb_female.Name = "rdb_female";
             rdb_female.Size = new Size(50, 24);
             rdb_female.TabIndex = 83;
@@ -339,7 +320,7 @@
             tb_city.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_city.FillColor = Color.Gainsboro;
             tb_city.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_city.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_city.Font = new Font("Segoe UI", 9F);
             tb_city.ForeColor = Color.Black;
             tb_city.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_city.Location = new Point(126, 384);
@@ -365,7 +346,7 @@
             tb_ward.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_ward.FillColor = Color.Gainsboro;
             tb_ward.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_ward.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_ward.Font = new Font("Segoe UI", 9F);
             tb_ward.ForeColor = Color.Black;
             tb_ward.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_ward.Location = new Point(36, 384);
@@ -391,7 +372,7 @@
             tb_homenum.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_homenum.FillColor = Color.Gainsboro;
             tb_homenum.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_homenum.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_homenum.Font = new Font("Segoe UI", 9F);
             tb_homenum.ForeColor = Color.Black;
             tb_homenum.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_homenum.Location = new Point(36, 290);
@@ -418,7 +399,7 @@
             tb_sodienthoai.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_sodienthoai.FillColor = Color.Gainsboro;
             tb_sodienthoai.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_sodienthoai.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_sodienthoai.Font = new Font("Segoe UI", 9F);
             tb_sodienthoai.ForeColor = Color.Black;
             tb_sodienthoai.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_sodienthoai.Location = new Point(36, 131);
@@ -445,7 +426,7 @@
             tb_tienluong.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_tienluong.FillColor = Color.Gainsboro;
             tb_tienluong.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_tienluong.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_tienluong.Font = new Font("Segoe UI", 9F);
             tb_tienluong.ForeColor = Color.Black;
             tb_tienluong.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_tienluong.Location = new Point(36, 202);
@@ -472,7 +453,7 @@
             tb_vitrilamviec.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_vitrilamviec.FillColor = Color.Gainsboro;
             tb_vitrilamviec.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_vitrilamviec.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_vitrilamviec.Font = new Font("Segoe UI", 9F);
             tb_vitrilamviec.ForeColor = Color.Black;
             tb_vitrilamviec.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_vitrilamviec.Location = new Point(344, 251);
@@ -495,7 +476,7 @@
             btn_cancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_cancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_cancel.FillColor = Color.White;
-            btn_cancel.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_cancel.Font = new Font("Segoe UI", 10F);
             btn_cancel.ForeColor = Color.Black;
             btn_cancel.Location = new Point(126, 485);
             btn_cancel.Name = "btn_cancel";
@@ -575,7 +556,7 @@
             dtp_beginwork.Checked = true;
             dtp_beginwork.CustomizableEdges = customizableEdges21;
             dtp_beginwork.FillColor = Color.White;
-            dtp_beginwork.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dtp_beginwork.Font = new Font("Segoe UI", 9F);
             dtp_beginwork.Format = DateTimePickerFormat.Short;
             dtp_beginwork.Location = new Point(344, 131);
             dtp_beginwork.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -594,7 +575,7 @@
             dtp_birth.Checked = true;
             dtp_birth.CustomizableEdges = customizableEdges23;
             dtp_birth.FillColor = Color.White;
-            dtp_birth.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dtp_birth.Font = new Font("Segoe UI", 9F);
             dtp_birth.Format = DateTimePickerFormat.Short;
             dtp_birth.Location = new Point(344, 61);
             dtp_birth.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
@@ -637,7 +618,7 @@
             tb_name.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_name.FillColor = Color.Gainsboro;
             tb_name.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_name.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_name.Font = new Font("Segoe UI", 9F);
             tb_name.ForeColor = Color.Black;
             tb_name.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_name.Location = new Point(36, 61);
@@ -676,7 +657,6 @@
             Controls.Add(label8);
             Controls.Add(pb_avt);
             Controls.Add(btn_add);
-            Controls.Add(rdb_other);
             Controls.Add(rdb_female);
             Controls.Add(rdb_male);
             Controls.Add(label2);
@@ -729,7 +709,6 @@
         private Label label8;
         private PictureBox pb_avt;
         private Guna.UI2.WinForms.Guna2Button btn_add;
-        private Guna.UI2.WinForms.Guna2RadioButton rdb_other;
         private Guna.UI2.WinForms.Guna2RadioButton rdb_female;
         private Guna.UI2.WinForms.Guna2RadioButton rdb_male;
         private Label label2;
