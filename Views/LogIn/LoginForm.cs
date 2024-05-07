@@ -1,4 +1,5 @@
-﻿using NhaKhoaCuoiKy.Helpers;
+﻿using NhaKhoaCuoiKy.FaceRecognize;
+using NhaKhoaCuoiKy.Helpers;
 using NhaKhoaCuoiKy.Models;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace NhaKhoaCuoiKy.Views.LogIn
     public partial class LoginForm : Form
     {
         bool isHide = true;
+        public UserModel userAccount;
         public LoginForm()
         {
             InitializeComponent();
@@ -45,7 +47,8 @@ namespace NhaKhoaCuoiKy.Views.LogIn
 
         public void removeInfoWhenLogout()
         {
-            if(!cb_remember.Checked) {
+            if (!cb_remember.Checked)
+            {
                 tb_username.Text = string.Empty;
                 tb_password.Text = string.Empty;
             }
@@ -69,7 +72,7 @@ namespace NhaKhoaCuoiKy.Views.LogIn
             try
             {
                 DataTable dt = UserHelper.getUser(tb_username.Text.Trim(), tb_password.Text);
-                if(dt.Rows.Count != 1)
+                if (dt.Rows.Count != 1)
                 {
                     MessageBox.Show("Tài khoản mật khẩu không chính xác", "Đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -84,7 +87,7 @@ namespace NhaKhoaCuoiKy.Views.LogIn
                 mainForm.Show();
                 this.Hide();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -98,6 +101,27 @@ namespace NhaKhoaCuoiKy.Views.LogIn
         private void btn_register_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Vui lòng liên hệ quản trị viên để được hỗ trợ", "Đăng ký", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btn_facerecognize_Click(object sender, EventArgs e)
+        {
+            
+            LoginByFace loginByFace = new LoginByFace(this);
+            loginByFace.ShowDialog();
+            this.Hide();
+            if(userAccount != null)
+            {
+                MainForm mainForm = new MainForm(userAccount, this);
+                this.Owner = mainForm;
+                mainForm.Show();
+                this.Hide();
+            }
+            else
+            {
+                this.Show();
+                MessageBox.Show("Không thể nhận diện khuôn mặt", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+            }
         }
     }
 }

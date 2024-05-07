@@ -60,7 +60,7 @@ namespace NhaKhoaCuoiKy.Views.PatientForm
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            if(tb_name.Text.Trim().Length == 0)
+            if (tb_name.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Nhập tên đăng nhập", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -70,7 +70,7 @@ namespace NhaKhoaCuoiKy.Views.PatientForm
                 MessageBox.Show("Tên đăng nhập đã tồn tại", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if(cbb_decentralization.SelectedIndex == 0)
+            if (cbb_decentralization.SelectedIndex == 0)
             {
                 MessageBox.Show("Chọn phân quyền", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -88,7 +88,7 @@ namespace NhaKhoaCuoiKy.Views.PatientForm
             string username = tb_name.Text.Trim();
             string password = tb_password.Text;
             int decentralization = cbb_decentralization.SelectedIndex - 1;
-            if(AccountHelper.addUserAccount(username, password, decentralization, employeeID))
+            if (AccountHelper.addUserAccount(username, password, decentralization, employeeID))
             {
                 MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 userManagement.loadUser(EmployeeHelper.getAllEmployeeWithAccount());

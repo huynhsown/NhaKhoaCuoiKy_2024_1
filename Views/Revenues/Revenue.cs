@@ -113,12 +113,11 @@ namespace NhaKhoaCuoiKy.Views.Revenues
 
                         // Truy vấn cơ sở dữ liệu để lấy thông tin từ các bảng liên quan
                         string queryDetails = @"
-                            SELECT DonThuoc.SoLuong, ThongTinSuDungThuoc.SoLuong AS SoLuongSuDung, Thuoc.GiaBan
-                            FROM HOADON
-                            INNER JOIN DonThuoc ON HOADON.MaHoaDon = DonThuoc.MaHoaDon
-                            INNER JOIN ThongTinSuDungThuoc ON DonThuoc.MaDonThuoc = ThongTinSuDungThuoc.MaDonThuoc
-                            INNER JOIN Thuoc ON ThongTinSuDungThuoc.MaThuoc = Thuoc.MaThuoc
-                            WHERE HOADON.MaHoaDon = @maHoaDon";
+                        SELECT ThongTinSuDungThuoc.SoLuong AS SoLuongSuDung, Thuoc.GiaBan
+                        FROM HOADON
+                        INNER JOIN ThongTinSuDungThuoc ON HOADON.MaHoaDon = ThongTinSuDungThuoc.MaHoaDon
+                        INNER JOIN Thuoc ON ThongTinSuDungThuoc.MaThuoc = Thuoc.MaThuoc
+                        WHERE HOADON.MaHoaDon = @maHoaDon";
 
                         SqlCommand cmdDetails = new SqlCommand(queryDetails, db.getConnection);
                         cmdDetails.Parameters.AddWithValue("@maHoaDon", maHoaDon2);
@@ -129,11 +128,10 @@ namespace NhaKhoaCuoiKy.Views.Revenues
                         // Tính toán và thêm vào dtResult
                         foreach (DataRow detailRow in dtDetails2.Rows)
                         {
-                            int soLuongDonThuoc = Convert.ToInt32(detailRow["SoLuong"]);
                             int soLuongSuDung = Convert.ToInt32(detailRow["SoLuongSuDung"]);
                             decimal giaBan = Convert.ToDecimal(detailRow["GiaBan"]);
 
-                            decimal triGia = soLuongDonThuoc * soLuongSuDung * giaBan;
+                            decimal triGia =  soLuongSuDung * giaBan;
 
                             // Check if a row with the same MaHoaDon, TenDichVu, and NgayTaoHoaDon already exists in dtResult
                             DataRow[] existingRows = dtResult.Select($"MaHoaDon = {maHoaDon2} AND DichVu = 'Thuoc' AND NgayTaoHoaDon = '{ngayTaoHoaDon2}'");
@@ -272,31 +270,7 @@ namespace NhaKhoaCuoiKy.Views.Revenues
                         dtResult.Rows.Add(maHoaDon, tenDichVu, ngayTaoHoaDon, triGia);
 
                     }
-                    // Truy vấn cơ sở dữ liệu để lấy thông tin từ các bảng liên quan
-                    string queryDetails = @"SELECT DonThuoc.SoLuong, ThongTinSuDungThuoc.SoLuong AS SoLuongSuDung, Thuoc.GiaBan
-                    FROM HOADON
-                    INNER JOIN DonThuoc ON HOADON.MaHoaDon = DonThuoc.MaHoaDon
-                    INNER JOIN ThongTinSuDungThuoc ON DonThuoc.MaDonThuoc = ThongTinSuDungThuoc.MaDonThuoc
-                    INNER JOIN Thuoc ON ThongTinSuDungThuoc.MaThuoc = Thuoc.MaThuoc
-                    WHERE HOADON.MaHoaDon = @maHoaDon";
-
-                    SqlCommand cmdDetails = new SqlCommand(queryDetails, db.getConnection);
-                    cmdDetails.Parameters.AddWithValue("@maHoaDon", maHoaDon);
-                    SqlDataAdapter detailAdapter2 = new SqlDataAdapter(cmdDetails);
-                    DataTable dtDetails2 = new DataTable();
-                    detailAdapter2.Fill(dtDetails2);
-
-                    // Tính toán và thêm vào dtResult
-                    foreach (DataRow detailRow in dtDetails2.Rows)
-                    {
-                        int soLuongDonThuoc = Convert.ToInt32(detailRow["SoLuong"]);
-                        int soLuongSuDung = Convert.ToInt32(detailRow["SoLuongSuDung"]);
-                        decimal giaBan = Convert.ToDecimal(detailRow["GiaBan"]);
-
-                        decimal triGia = soLuongDonThuoc * soLuongSuDung * giaBan;
-                        dtResult.Rows.Add(maHoaDon, "Thuoc", ngayTaoHoaDon, triGia);
-                    }
-                    data_revenue.DataSource = dtResult;
+                    
 
                 }
                 foreach (DataRow row2 in dtHoaDon.Rows)
@@ -306,12 +280,11 @@ namespace NhaKhoaCuoiKy.Views.Revenues
 
                     // Truy vấn cơ sở dữ liệu để lấy thông tin từ các bảng liên quan
                     string queryDetails = @"
-                            SELECT DonThuoc.SoLuong, ThongTinSuDungThuoc.SoLuong AS SoLuongSuDung, Thuoc.GiaBan
-                            FROM HOADON
-                            INNER JOIN DonThuoc ON HOADON.MaHoaDon = DonThuoc.MaHoaDon
-                            INNER JOIN ThongTinSuDungThuoc ON DonThuoc.MaDonThuoc = ThongTinSuDungThuoc.MaDonThuoc
-                            INNER JOIN Thuoc ON ThongTinSuDungThuoc.MaThuoc = Thuoc.MaThuoc
-                            WHERE HOADON.MaHoaDon = @maHoaDon";
+                                            SELECT ThongTinSuDungThuoc.SoLuong AS SoLuongSuDung, Thuoc.GiaBan
+                                            FROM HOADON
+                                            INNER JOIN ThongTinSuDungThuoc ON HOADON.MaHoaDon = ThongTinSuDungThuoc.MaHoaDon
+                                            INNER JOIN Thuoc ON ThongTinSuDungThuoc.MaThuoc = Thuoc.MaThuoc
+                                            WHERE HOADON.MaHoaDon = @maHoaDon";
 
                     SqlCommand cmdDetails = new SqlCommand(queryDetails, db.getConnection);
                     cmdDetails.Parameters.AddWithValue("@maHoaDon", maHoaDon2);
@@ -322,11 +295,10 @@ namespace NhaKhoaCuoiKy.Views.Revenues
                     // Tính toán và thêm vào dtResult
                     foreach (DataRow detailRow in dtDetails2.Rows)
                     {
-                        int soLuongDonThuoc = Convert.ToInt32(detailRow["SoLuong"]);
                         int soLuongSuDung = Convert.ToInt32(detailRow["SoLuongSuDung"]);
                         decimal giaBan = Convert.ToDecimal(detailRow["GiaBan"]);
 
-                        decimal triGia = soLuongDonThuoc * soLuongSuDung * giaBan;
+                        decimal triGia =  soLuongSuDung * giaBan;
 
                         // Check if a row with the same MaHoaDon, TenDichVu, and NgayTaoHoaDon already exists in dtResult
                         DataRow[] existingRows = dtResult.Select($"MaHoaDon = {maHoaDon2} AND DichVu = 'Thuoc' AND NgayTaoHoaDon = '{ngayTaoHoaDon2}'");
@@ -966,12 +938,11 @@ namespace NhaKhoaCuoiKy.Views.Revenues
 
             // Truy vấn dữ liệu dựa trên tháng và năm đã chọn
             string query = "SELECT Thuoc.TenThuoc, SUM(ThongTinSuDungThuoc.SoLuong) AS TotalUsage " +
-                           "FROM ThongTinSuDungThuoc " +
-                           "INNER JOIN DonThuoc ON ThongTinSuDungThuoc.MaDonThuoc = DonThuoc.MaDonThuoc " +
-                           "INNER JOIN HoaDon ON HoaDon.MaHoaDon = DonThuoc.MaHoaDon " +
-                           "INNER JOIN Thuoc ON ThongTinSuDungThuoc.MaThuoc = Thuoc.MaThuoc " +
-                           "WHERE MONTH(HoaDon.NgayThamKham) = @Month AND YEAR(HoaDon.NgayThamKham) = @Year " +
-                           "GROUP BY Thuoc.TenThuoc";
+                   "FROM ThongTinSuDungThuoc " +
+                   "INNER JOIN HoaDon ON HoaDon.MaHoaDon = ThongTinSuDungThuoc.MaHoaDon " +
+                   "INNER JOIN Thuoc ON ThongTinSuDungThuoc.MaThuoc = Thuoc.MaThuoc " +
+                   "WHERE MONTH(HoaDon.NgayThamKham) = @Month AND YEAR(HoaDon.NgayThamKham) = @Year " +
+                   "GROUP BY Thuoc.TenThuoc";
 
             DataTable dataTable = new DataTable();
             using (SqlCommand cmd = new SqlCommand(query, db.getConnection))
@@ -1012,12 +983,11 @@ namespace NhaKhoaCuoiKy.Views.Revenues
 
             // Truy vấn dữ liệu dựa trên năm đã chọn
             string query = "SELECT Thuoc.TenThuoc, SUM(ThongTinSuDungThuoc.SoLuong) AS TotalUsage " +
-                           "FROM ThongTinSuDungThuoc " +
-                           "INNER JOIN DonThuoc ON ThongTinSuDungThuoc.MaDonThuoc = DonThuoc.MaDonThuoc " +
-                           "INNER JOIN HoaDon ON HoaDon.MaHoaDon = DonThuoc.MaHoaDon " +
-                           "INNER JOIN Thuoc ON ThongTinSuDungThuoc.MaThuoc = Thuoc.MaThuoc " +
-                           "WHERE YEAR(HoaDon.NgayThamKham) = @Year " +
-                           "GROUP BY Thuoc.TenThuoc";
+                   "FROM ThongTinSuDungThuoc " +
+                   "INNER JOIN HoaDon ON HoaDon.MaHoaDon = ThongTinSuDungThuoc.MaHoaDon " +
+                   "INNER JOIN Thuoc ON ThongTinSuDungThuoc.MaThuoc = Thuoc.MaThuoc " +
+                   "WHERE YEAR(HoaDon.NgayThamKham) = @Year " +
+                   "GROUP BY Thuoc.TenThuoc";
 
             DataTable dataTable = new DataTable();
             using (SqlCommand cmd = new SqlCommand(query, db.getConnection))
@@ -1063,12 +1033,11 @@ namespace NhaKhoaCuoiKy.Views.Revenues
 
             // Truy vấn dữ liệu dựa trên quý và năm đã chọn
             string query = "SELECT Thuoc.TenThuoc, SUM(ThongTinSuDungThuoc.SoLuong) AS TotalUsage " +
-                           "FROM ThongTinSuDungThuoc " +
-                           "INNER JOIN DonThuoc ON ThongTinSuDungThuoc.MaDonThuoc = DonThuoc.MaDonThuoc " +
-                           "INNER JOIN HoaDon ON HoaDon.MaHoaDon = DonThuoc.MaHoaDon " +
-                           "INNER JOIN Thuoc ON ThongTinSuDungThuoc.MaThuoc = Thuoc.MaThuoc " +
-                           "WHERE DATEPART(QUARTER, HoaDon.NgayThamKham) = @Quarter AND YEAR(HoaDon.NgayThamKham) = @Year " +
-                           "GROUP BY Thuoc.TenThuoc";
+                   "FROM ThongTinSuDungThuoc " +
+                   "INNER JOIN HoaDon ON HoaDon.MaHoaDon = ThongTinSuDungThuoc.MaHoaDon " +
+                   "INNER JOIN Thuoc ON ThongTinSuDungThuoc.MaThuoc = Thuoc.MaThuoc " +
+                   "WHERE DATEPART(QUARTER, HoaDon.NgayThamKham) = @Quarter AND YEAR(HoaDon.NgayThamKham) = @Year " +
+                   "GROUP BY Thuoc.TenThuoc";
 
             DataTable dataTable = new DataTable();
             using (SqlCommand cmd = new SqlCommand(query, db.getConnection))

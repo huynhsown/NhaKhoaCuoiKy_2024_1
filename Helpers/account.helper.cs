@@ -79,6 +79,10 @@ namespace NhaKhoaCuoiKy.Helpers
             {
                 db = new Database();
                 db.openConnection();
+                using (SqlCommand cmd = new SqlCommand($"delete from KHUONMAT WHERE MaNhanVien = {employeeID}", db.getConnection))
+                {
+                    cmd.ExecuteNonQuery();
+                }
                 using (SqlCommand cmd  = new SqlCommand($"delete from taikhoan where MaNhanVien = {employeeID}", db.getConnection))
                 {
                     if (cmd.ExecuteNonQuery() > 0) check = true;

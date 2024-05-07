@@ -1,4 +1,5 @@
-﻿using NhaKhoaCuoiKy.Helpers;
+﻿using NhaKhoaCuoiKy.FaceRecognize;
+using NhaKhoaCuoiKy.Helpers;
 using NhaKhoaCuoiKy.Models;
 using NhaKhoaCuoiKy.Views.PatientForm;
 using System;
@@ -89,6 +90,17 @@ namespace NhaKhoaCuoiKy.Views.LogIn
                 int employeeID = Convert.ToInt32(data_account.Rows[e.RowIndex].Cells[0].Value);
                 AddUserAccount addUserAccount = new AddUserAccount(employeeID, this);
                 ViewHelper.loadForm(addUserAccount, mainForm);
+            }
+            if(data_account.Columns[e.ColumnIndex].Name == "col_btn_addFace")
+            {
+                if (data_account.Rows[e.RowIndex].Cells[3].Value.ToString().Trim() == "Chưa có tài khoản")
+                {
+                    MessageBox.Show("Nhân viên chưa có tài khoản", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+                int employeeID = Convert.ToInt32(data_account.Rows[e.RowIndex].Cells[0].Value);
+                LoginRecognize loginRecognize = new LoginRecognize(employeeID, this);
+                ViewHelper.loadForm(loginRecognize, mainForm);
             }
         }
 

@@ -91,7 +91,7 @@
             tb_name.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_name.FillColor = Color.Gainsboro;
             tb_name.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_name.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_name.Font = new Font("Segoe UI", 9F);
             tb_name.ForeColor = Color.Black;
             tb_name.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_name.Location = new Point(107, 70);
@@ -114,7 +114,7 @@
             cbb_decentralization.DropDownStyle = ComboBoxStyle.DropDownList;
             cbb_decentralization.FocusedColor = Color.FromArgb(94, 148, 255);
             cbb_decentralization.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cbb_decentralization.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cbb_decentralization.Font = new Font("Segoe UI", 10F);
             cbb_decentralization.ForeColor = Color.Black;
             cbb_decentralization.ItemHeight = 30;
             cbb_decentralization.Items.AddRange(new object[] { "-Chọn quyền-", "0", "1", "2", "3" });
@@ -167,7 +167,7 @@
             tb_password.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_password.FillColor = Color.Gainsboro;
             tb_password.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_password.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_password.Font = new Font("Segoe UI", 9F);
             tb_password.ForeColor = Color.Black;
             tb_password.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_password.Location = new Point(107, 171);
@@ -213,7 +213,7 @@
             tb_confirm.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_confirm.FillColor = Color.Gainsboro;
             tb_confirm.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_confirm.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_confirm.Font = new Font("Segoe UI", 9F);
             tb_confirm.ForeColor = Color.Black;
             tb_confirm.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_confirm.Location = new Point(439, 167);
@@ -238,7 +238,7 @@
             btn_add.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_add.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_add.FillColor = Color.FromArgb(17, 34, 71);
-            btn_add.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_add.Font = new Font("Segoe UI", 10F);
             btn_add.ForeColor = Color.White;
             btn_add.Location = new Point(429, 262);
             btn_add.Name = "btn_add";
@@ -258,7 +258,7 @@
             btn_cancel.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_cancel.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_cancel.FillColor = Color.White;
-            btn_cancel.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_cancel.Font = new Font("Segoe UI", 10F);
             btn_cancel.ForeColor = Color.Black;
             btn_cancel.Location = new Point(211, 262);
             btn_cancel.Name = "btn_cancel";
@@ -273,7 +273,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(763, 324);
+            ClientSize = new Size(703, 324);
             Controls.Add(btn_add);
             Controls.Add(btn_cancel);
             Controls.Add(pb_confirm);

@@ -58,6 +58,7 @@
             lb_forgot = new Label();
             btn_register = new Label();
             label4 = new Label();
+            btn_facerecognize = new Label();
             guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pb_see).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pb_hide).BeginInit();
@@ -117,7 +118,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 18F);
             label1.Location = new Point(162, 36);
             label1.Name = "label1";
             label1.Size = new Size(132, 41);
@@ -140,7 +141,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 10F);
             label2.Location = new Point(82, 90);
             label2.Name = "label2";
             label2.Size = new Size(306, 23);
@@ -157,7 +158,7 @@
             tb_username.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             tb_username.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_username.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_username.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_username.Font = new Font("Segoe UI", 9F);
             tb_username.ForeColor = Color.Black;
             tb_username.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_username.Location = new Point(82, 153);
@@ -180,7 +181,7 @@
             tb_password.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             tb_password.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
             tb_password.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            tb_password.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            tb_password.Font = new Font("Segoe UI", 9F);
             tb_password.ForeColor = Color.Black;
             tb_password.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
             tb_password.Location = new Point(82, 238);
@@ -219,7 +220,7 @@
             btn_login.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_login.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_login.FillColor = Color.FromArgb(17, 34, 100);
-            btn_login.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btn_login.Font = new Font("Segoe UI", 10F);
             btn_login.ForeColor = Color.White;
             btn_login.ImageAlign = HorizontalAlignment.Left;
             btn_login.Location = new Point(82, 357);
@@ -261,7 +262,7 @@
             // btn_register
             // 
             btn_register.ForeColor = Color.FromArgb(17, 34, 100);
-            btn_register.Location = new Point(270, 438);
+            btn_register.Location = new Point(267, 454);
             btn_register.Name = "btn_register";
             btn_register.Size = new Size(148, 24);
             btn_register.TabIndex = 25;
@@ -272,12 +273,23 @@
             // label4
             // 
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(128, 438);
+            label4.Location = new Point(125, 454);
             label4.Name = "label4";
             label4.Size = new Size(142, 24);
             label4.TabIndex = 26;
             label4.Text = "Chưa có tài khoản?";
             label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btn_facerecognize
+            // 
+            btn_facerecognize.ForeColor = Color.FromArgb(17, 34, 100);
+            btn_facerecognize.Location = new Point(82, 417);
+            btn_facerecognize.Name = "btn_facerecognize";
+            btn_facerecognize.Size = new Size(306, 24);
+            btn_facerecognize.TabIndex = 27;
+            btn_facerecognize.Text = "Đăng nhập bằng nhận diện khuôn mặt";
+            btn_facerecognize.TextAlign = ContentAlignment.MiddleCenter;
+            btn_facerecognize.Click += btn_facerecognize_Click;
             // 
             // LoginForm
             // 
@@ -285,6 +297,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(925, 555);
+            Controls.Add(btn_facerecognize);
             Controls.Add(label4);
             Controls.Add(btn_register);
             Controls.Add(lb_forgot);
@@ -330,5 +343,6 @@
         private Label lb_forgot;
         private Label btn_register;
         private Label label4;
+        private Label btn_facerecognize;
     }
 }

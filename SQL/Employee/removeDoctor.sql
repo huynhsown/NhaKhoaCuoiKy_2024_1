@@ -1,8 +1,12 @@
+
 CREATE PROCEDURE [dbo].[removeDoctor]
 	@MaNhanVien INT
 AS
 BEGIN
-	DELETE FROM NHANVIEN WHERE MaNhanVien = @MaNhanVien;
+	DELETE FROM THONGTINDICHVU WHERE MaNhanVien = @MaNhanVien;
 	DELETE FROM BACSI WHERE MaNhanVien = @MaNhanVien;
-	RETURN 1;
-END
+	DELETE FROM KHUONMAT WHERE MaNhanVien = @MaNhanVien;
+	DELETE FROM TAIKHOAN WHERE MaNhanVien = @MaNhanVien;
+	DELETE FROM NHANVIEN WHERE MaNhanVien = @MaNhanVien;
+        RETURN 1;
+END;
