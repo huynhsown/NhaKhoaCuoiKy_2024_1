@@ -127,6 +127,7 @@ namespace NhaKhoaCuoiKy.Views
         {
             if (dt.Rows.Count > 0)
             {
+                data_benhNhan.Rows.Clear();
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     int maBN = Convert.ToInt32(dt.Rows[i]["MaBenhNhan"]);

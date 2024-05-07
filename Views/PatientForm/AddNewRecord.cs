@@ -168,7 +168,7 @@ namespace NhaKhoaCuoiKy.Views.PatientForm
                     return;
                 }
                 DateTime now = DateTime.Now;
-                recordID = PatientHelper.addNewRecord(patienID, 1, DentalDisease, OtherDisease, Symptoms, Result, Diagnosis, TreatmentMethod, NextAppointment, now);
+                recordID = PatientHelper.addNewRecord(patienID, userAccount.employeeID, DentalDisease, OtherDisease, Symptoms, Result, Diagnosis, TreatmentMethod, NextAppointment, now);
                 if (recordID != 0)
                 {
                     MessageBox.Show("Thêm bệnh án thành công", "Bệnh án", MessageBoxButtons.OK, MessageBoxIcon.Information);

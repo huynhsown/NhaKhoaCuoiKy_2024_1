@@ -107,7 +107,7 @@ namespace NhaKhoaCuoiKy.Views
             byte[] img = ms.ToArray();
 
             PatientModel patient = new PatientModel();
-            p = patient.addPatient(name, gender, birth, homenum, ward, city, img, phone, street);
+            PatientModel.AddPatient(name, gender, birth, homenum, ward, city, pb_avt.Image, phone, street);
             patientForm.addToDataGrid(patient.getAllPatient());
             Close();
 
