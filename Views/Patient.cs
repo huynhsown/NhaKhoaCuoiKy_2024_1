@@ -80,6 +80,10 @@ namespace NhaKhoaCuoiKy.Views
             pm = new PatientModel();
             data_benhNhan.AllowUserToAddRows = false;
             addToDataGrid(pm.getAllPatient());
+            if(userAccount.decentralization == 2)
+            {
+                data_benhNhan.Columns["col_btn_addRecord"].Visible = false;
+            }
             /*            data_benhNhan.Columns[0].Width = 90;
                         DataGridViewButtonColumn btn_record = new DataGridViewButtonColumn();
                         btn_record.HeaderText = "Thêm bệnh án";
