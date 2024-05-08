@@ -9,6 +9,7 @@ using NhaKhoaCuoiKy.Views.LogIn;
 using System.Text;
 using NhaKhoaCuoiKy.Views.QualityEvaluation;
 using NhaKhoaCuoiKy.Views.Revenues;
+using NhaKhoaCuoiKy.ShiftSchedule;
 
 namespace NhaKhoaCuoiKy.Views
 {
@@ -36,6 +37,7 @@ namespace NhaKhoaCuoiKy.Views
         private Evaluation evaluation;
         private Revenue revenue;
         private HieuSuatLamViec hslv;
+        private ScheduleForm shiftSchedule;
         private void MainForm_Load(object sender, EventArgs e)
         {
             panel_btn_employee.AutoSize = true;
@@ -48,7 +50,8 @@ namespace NhaKhoaCuoiKy.Views
                 btn_user.Visible = false;
                 btn_doanhthu.Visible = false;
                 btn_hslv.Visible = false;
-                if(userAccount.decentralization == 3)
+                btn_shift.Visible = false;
+                if (userAccount.decentralization == 3)
                 {
                     btn_appointment.Visible = false;
                     btn_danhgia.Visible = false;
@@ -278,6 +281,13 @@ namespace NhaKhoaCuoiKy.Views
             closeAllPanel();
             hslv?.Close();
             openChildForm(hslv = new HieuSuatLamViec(this));
+        }
+
+        private void btn_shift_Click(object sender, EventArgs e)
+        {
+            closeAllPanel();
+            shiftSchedule?.Close();
+            openChildForm(shiftSchedule = new ScheduleForm());
         }
     }
 }

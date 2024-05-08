@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -55,6 +52,11 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panelSideMenu = new Panel();
             btn_hslv = new Guna.UI2.WinForms.Guna2Button();
             btn_doanhthu = new Guna.UI2.WinForms.Guna2Button();
@@ -74,6 +76,7 @@
             panelIcon = new Panel();
             pictureBox1 = new PictureBox();
             panelMain = new Panel();
+            btn_shift = new Guna.UI2.WinForms.Guna2Button();
             panelSideMenu.SuspendLayout();
             panel_btn_employee.SuspendLayout();
             panelIcon.SuspendLayout();
@@ -84,6 +87,7 @@
             // 
             panelSideMenu.AutoScroll = true;
             panelSideMenu.BackColor = Color.FromArgb(17, 34, 71);
+            panelSideMenu.Controls.Add(btn_shift);
             panelSideMenu.Controls.Add(btn_hslv);
             panelSideMenu.Controls.Add(btn_doanhthu);
             panelSideMenu.Controls.Add(btn_danhgia);
@@ -108,14 +112,14 @@
             // 
             btn_hslv.BackColor = Color.Transparent;
             btn_hslv.BorderRadius = 8;
-            btn_hslv.CustomizableEdges = customizableEdges1;
+            btn_hslv.CustomizableEdges = customizableEdges3;
             btn_hslv.DisabledState.BorderColor = Color.DarkGray;
             btn_hslv.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_hslv.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_hslv.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_hslv.Dock = DockStyle.Top;
             btn_hslv.FillColor = Color.Transparent;
-            btn_hslv.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_hslv.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_hslv.ForeColor = Color.White;
             btn_hslv.Image = (Image)resources.GetObject("btn_hslv.Image");
             btn_hslv.ImageAlign = HorizontalAlignment.Left;
@@ -124,7 +128,7 @@
             btn_hslv.Margin = new Padding(10);
             btn_hslv.Name = "btn_hslv";
             btn_hslv.Padding = new Padding(10, 0, 0, 0);
-            btn_hslv.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btn_hslv.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btn_hslv.Size = new Size(229, 56);
             btn_hslv.TabIndex = 13;
             btn_hslv.Text = "Hiệu suất làm việc";
@@ -135,14 +139,14 @@
             // 
             btn_doanhthu.BackColor = Color.Transparent;
             btn_doanhthu.BorderRadius = 8;
-            btn_doanhthu.CustomizableEdges = customizableEdges3;
+            btn_doanhthu.CustomizableEdges = customizableEdges5;
             btn_doanhthu.DisabledState.BorderColor = Color.DarkGray;
             btn_doanhthu.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_doanhthu.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_doanhthu.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_doanhthu.Dock = DockStyle.Top;
             btn_doanhthu.FillColor = Color.Transparent;
-            btn_doanhthu.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_doanhthu.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_doanhthu.ForeColor = Color.White;
             btn_doanhthu.Image = (Image)resources.GetObject("btn_doanhthu.Image");
             btn_doanhthu.ImageAlign = HorizontalAlignment.Left;
@@ -151,7 +155,7 @@
             btn_doanhthu.Margin = new Padding(10);
             btn_doanhthu.Name = "btn_doanhthu";
             btn_doanhthu.Padding = new Padding(10, 0, 0, 0);
-            btn_doanhthu.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btn_doanhthu.ShadowDecoration.CustomizableEdges = customizableEdges6;
             btn_doanhthu.Size = new Size(229, 56);
             btn_doanhthu.TabIndex = 12;
             btn_doanhthu.Text = "Doanh thu";
@@ -162,14 +166,14 @@
             // 
             btn_danhgia.BackColor = Color.Transparent;
             btn_danhgia.BorderRadius = 8;
-            btn_danhgia.CustomizableEdges = customizableEdges5;
+            btn_danhgia.CustomizableEdges = customizableEdges7;
             btn_danhgia.DisabledState.BorderColor = Color.DarkGray;
             btn_danhgia.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_danhgia.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_danhgia.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_danhgia.Dock = DockStyle.Top;
             btn_danhgia.FillColor = Color.Transparent;
-            btn_danhgia.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_danhgia.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_danhgia.ForeColor = Color.White;
             btn_danhgia.Image = (Image)resources.GetObject("btn_danhgia.Image");
             btn_danhgia.ImageAlign = HorizontalAlignment.Left;
@@ -178,7 +182,7 @@
             btn_danhgia.Margin = new Padding(10);
             btn_danhgia.Name = "btn_danhgia";
             btn_danhgia.Padding = new Padding(10, 0, 0, 0);
-            btn_danhgia.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            btn_danhgia.ShadowDecoration.CustomizableEdges = customizableEdges8;
             btn_danhgia.Size = new Size(229, 56);
             btn_danhgia.TabIndex = 11;
             btn_danhgia.Text = "Đánh giá";
@@ -189,14 +193,14 @@
             // 
             btn_user.BackColor = Color.Transparent;
             btn_user.BorderRadius = 8;
-            btn_user.CustomizableEdges = customizableEdges7;
+            btn_user.CustomizableEdges = customizableEdges9;
             btn_user.DisabledState.BorderColor = Color.DarkGray;
             btn_user.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_user.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_user.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_user.Dock = DockStyle.Top;
             btn_user.FillColor = Color.Transparent;
-            btn_user.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_user.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_user.ForeColor = Color.White;
             btn_user.Image = Properties.Resources.icons8_account_100;
             btn_user.ImageAlign = HorizontalAlignment.Left;
@@ -205,7 +209,7 @@
             btn_user.Margin = new Padding(10);
             btn_user.Name = "btn_user";
             btn_user.Padding = new Padding(10, 0, 0, 0);
-            btn_user.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            btn_user.ShadowDecoration.CustomizableEdges = customizableEdges10;
             btn_user.Size = new Size(229, 56);
             btn_user.TabIndex = 9;
             btn_user.Text = "Quản lý tài khoản";
@@ -216,23 +220,23 @@
             // 
             btn_logout.BackColor = Color.Transparent;
             btn_logout.BorderRadius = 5;
-            btn_logout.CustomizableEdges = customizableEdges9;
+            btn_logout.CustomizableEdges = customizableEdges11;
             btn_logout.DisabledState.BorderColor = Color.DarkGray;
             btn_logout.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_logout.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_logout.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_logout.Dock = DockStyle.Bottom;
             btn_logout.FillColor = Color.Transparent;
-            btn_logout.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_logout.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_logout.ForeColor = Color.White;
             btn_logout.Image = Properties.Resources.icons8_power_off_button_100;
             btn_logout.ImageAlign = HorizontalAlignment.Left;
             btn_logout.ImageOffset = new Point(10, 0);
-            btn_logout.Location = new Point(0, 903);
+            btn_logout.Location = new Point(0, 959);
             btn_logout.Margin = new Padding(10);
             btn_logout.Name = "btn_logout";
             btn_logout.Padding = new Padding(10, 0, 0, 0);
-            btn_logout.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            btn_logout.ShadowDecoration.CustomizableEdges = customizableEdges12;
             btn_logout.Size = new Size(229, 56);
             btn_logout.TabIndex = 8;
             btn_logout.Text = "Đăng xuất";
@@ -245,14 +249,14 @@
             // 
             btn_medicine.BackColor = Color.Transparent;
             btn_medicine.BorderRadius = 8;
-            btn_medicine.CustomizableEdges = customizableEdges11;
+            btn_medicine.CustomizableEdges = customizableEdges13;
             btn_medicine.DisabledState.BorderColor = Color.DarkGray;
             btn_medicine.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_medicine.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_medicine.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_medicine.Dock = DockStyle.Top;
             btn_medicine.FillColor = Color.Transparent;
-            btn_medicine.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_medicine.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_medicine.ForeColor = Color.White;
             btn_medicine.Image = Properties.Resources.icons8_medicine_100;
             btn_medicine.ImageAlign = HorizontalAlignment.Left;
@@ -261,7 +265,7 @@
             btn_medicine.Margin = new Padding(10);
             btn_medicine.Name = "btn_medicine";
             btn_medicine.Padding = new Padding(10, 0, 0, 0);
-            btn_medicine.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btn_medicine.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btn_medicine.Size = new Size(229, 56);
             btn_medicine.TabIndex = 7;
             btn_medicine.Text = "Thuốc";
@@ -272,14 +276,14 @@
             // 
             btn_appointment.BackColor = Color.Transparent;
             btn_appointment.BorderRadius = 8;
-            btn_appointment.CustomizableEdges = customizableEdges11;
+            btn_appointment.CustomizableEdges = customizableEdges13;
             btn_appointment.DisabledState.BorderColor = Color.DarkGray;
             btn_appointment.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_appointment.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_appointment.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_appointment.Dock = DockStyle.Top;
             btn_appointment.FillColor = Color.Transparent;
-            btn_appointment.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_appointment.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_appointment.ForeColor = Color.White;
             btn_appointment.Image = Properties.Resources.icons8_appointment_100;
             btn_appointment.ImageAlign = HorizontalAlignment.Left;
@@ -288,7 +292,7 @@
             btn_appointment.Margin = new Padding(10);
             btn_appointment.Name = "btn_appointment";
             btn_appointment.Padding = new Padding(10, 0, 0, 0);
-            btn_appointment.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            btn_appointment.ShadowDecoration.CustomizableEdges = customizableEdges14;
             btn_appointment.Size = new Size(229, 56);
             btn_appointment.TabIndex = 7;
             btn_appointment.Text = "Lịch hẹn";
@@ -299,14 +303,14 @@
             // 
             btn_service.BackColor = Color.Transparent;
             btn_service.BorderRadius = 8;
-            btn_service.CustomizableEdges = customizableEdges13;
+            btn_service.CustomizableEdges = customizableEdges15;
             btn_service.DisabledState.BorderColor = Color.DarkGray;
             btn_service.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_service.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_service.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_service.Dock = DockStyle.Top;
             btn_service.FillColor = Color.Transparent;
-            btn_service.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_service.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_service.ForeColor = Color.White;
             btn_service.Image = Properties.Resources.icons8_service_100;
             btn_service.ImageAlign = HorizontalAlignment.Left;
@@ -315,7 +319,7 @@
             btn_service.Margin = new Padding(10);
             btn_service.Name = "btn_service";
             btn_service.Padding = new Padding(10, 0, 0, 0);
-            btn_service.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            btn_service.ShadowDecoration.CustomizableEdges = customizableEdges16;
             btn_service.Size = new Size(229, 56);
             btn_service.TabIndex = 6;
             btn_service.Text = "Dịch vụ";
@@ -339,14 +343,14 @@
             // 
             btn_protector.BackColor = Color.Transparent;
             btn_protector.BorderRadius = 8;
-            btn_protector.CustomizableEdges = customizableEdges15;
+            btn_protector.CustomizableEdges = customizableEdges17;
             btn_protector.DisabledState.BorderColor = Color.DarkGray;
             btn_protector.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_protector.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_protector.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_protector.Dock = DockStyle.Top;
             btn_protector.FillColor = Color.Transparent;
-            btn_protector.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_protector.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_protector.ForeColor = Color.White;
             btn_protector.Image = Properties.Resources.icons8_guard_100;
             btn_protector.ImageAlign = HorizontalAlignment.Left;
@@ -355,7 +359,7 @@
             btn_protector.Margin = new Padding(10);
             btn_protector.Name = "btn_protector";
             btn_protector.Padding = new Padding(45, 0, 0, 0);
-            btn_protector.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            btn_protector.ShadowDecoration.CustomizableEdges = customizableEdges18;
             btn_protector.Size = new Size(229, 56);
             btn_protector.TabIndex = 7;
             btn_protector.Text = "Bảo vệ";
@@ -366,14 +370,14 @@
             // 
             btn_nurse.BackColor = Color.Transparent;
             btn_nurse.BorderRadius = 8;
-            btn_nurse.CustomizableEdges = customizableEdges17;
+            btn_nurse.CustomizableEdges = customizableEdges19;
             btn_nurse.DisabledState.BorderColor = Color.DarkGray;
             btn_nurse.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_nurse.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_nurse.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_nurse.Dock = DockStyle.Top;
             btn_nurse.FillColor = Color.Transparent;
-            btn_nurse.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_nurse.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_nurse.ForeColor = Color.White;
             btn_nurse.Image = Properties.Resources.icons8_nurse_64;
             btn_nurse.ImageAlign = HorizontalAlignment.Left;
@@ -382,7 +386,7 @@
             btn_nurse.Margin = new Padding(10);
             btn_nurse.Name = "btn_nurse";
             btn_nurse.Padding = new Padding(45, 0, 0, 0);
-            btn_nurse.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            btn_nurse.ShadowDecoration.CustomizableEdges = customizableEdges20;
             btn_nurse.Size = new Size(229, 56);
             btn_nurse.TabIndex = 6;
             btn_nurse.Text = "Y tá";
@@ -393,14 +397,14 @@
             // 
             btn_employee_Doctor.BackColor = Color.Transparent;
             btn_employee_Doctor.BorderRadius = 8;
-            btn_employee_Doctor.CustomizableEdges = customizableEdges19;
+            btn_employee_Doctor.CustomizableEdges = customizableEdges21;
             btn_employee_Doctor.DisabledState.BorderColor = Color.DarkGray;
             btn_employee_Doctor.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_employee_Doctor.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_employee_Doctor.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_employee_Doctor.Dock = DockStyle.Top;
             btn_employee_Doctor.FillColor = Color.Transparent;
-            btn_employee_Doctor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_employee_Doctor.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_employee_Doctor.ForeColor = Color.White;
             btn_employee_Doctor.Image = Properties.Resources.icons8_doctor_64;
             btn_employee_Doctor.ImageAlign = HorizontalAlignment.Left;
@@ -409,7 +413,7 @@
             btn_employee_Doctor.Margin = new Padding(10);
             btn_employee_Doctor.Name = "btn_employee_Doctor";
             btn_employee_Doctor.Padding = new Padding(45, 0, 0, 0);
-            btn_employee_Doctor.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            btn_employee_Doctor.ShadowDecoration.CustomizableEdges = customizableEdges22;
             btn_employee_Doctor.Size = new Size(229, 56);
             btn_employee_Doctor.TabIndex = 5;
             btn_employee_Doctor.Text = "Bác sĩ";
@@ -420,14 +424,14 @@
             // 
             btn_employee.BackColor = Color.Transparent;
             btn_employee.BorderRadius = 8;
-            btn_employee.CustomizableEdges = customizableEdges21;
+            btn_employee.CustomizableEdges = customizableEdges23;
             btn_employee.DisabledState.BorderColor = Color.DarkGray;
             btn_employee.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_employee.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_employee.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_employee.Dock = DockStyle.Top;
             btn_employee.FillColor = Color.Transparent;
-            btn_employee.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_employee.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_employee.ForeColor = Color.White;
             btn_employee.Image = Properties.Resources.icons8_employee_100__1_;
             btn_employee.ImageAlign = HorizontalAlignment.Left;
@@ -436,7 +440,7 @@
             btn_employee.Margin = new Padding(10);
             btn_employee.Name = "btn_employee";
             btn_employee.Padding = new Padding(10, 0, 0, 0);
-            btn_employee.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            btn_employee.ShadowDecoration.CustomizableEdges = customizableEdges24;
             btn_employee.Size = new Size(229, 56);
             btn_employee.TabIndex = 4;
             btn_employee.Text = "Nhân viên";
@@ -449,14 +453,14 @@
             // 
             btn_patient.BackColor = Color.Transparent;
             btn_patient.BorderRadius = 8;
-            btn_patient.CustomizableEdges = customizableEdges23;
+            btn_patient.CustomizableEdges = customizableEdges25;
             btn_patient.DisabledState.BorderColor = Color.DarkGray;
             btn_patient.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_patient.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_patient.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_patient.Dock = DockStyle.Top;
             btn_patient.FillColor = Color.Transparent;
-            btn_patient.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_patient.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_patient.ForeColor = Color.White;
             btn_patient.Image = Properties.Resources.icons8_patient_32;
             btn_patient.ImageAlign = HorizontalAlignment.Left;
@@ -465,7 +469,7 @@
             btn_patient.Margin = new Padding(10);
             btn_patient.Name = "btn_patient";
             btn_patient.Padding = new Padding(10, 0, 0, 0);
-            btn_patient.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            btn_patient.ShadowDecoration.CustomizableEdges = customizableEdges26;
             btn_patient.Size = new Size(229, 56);
             btn_patient.TabIndex = 3;
             btn_patient.Text = "Bệnh nhân";
@@ -478,14 +482,14 @@
             // 
             btn_home.BackColor = Color.Transparent;
             btn_home.BorderRadius = 8;
-            btn_home.CustomizableEdges = customizableEdges25;
+            btn_home.CustomizableEdges = customizableEdges27;
             btn_home.DisabledState.BorderColor = Color.DarkGray;
             btn_home.DisabledState.CustomBorderColor = Color.DarkGray;
             btn_home.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btn_home.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btn_home.Dock = DockStyle.Top;
             btn_home.FillColor = Color.Transparent;
-            btn_home.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btn_home.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btn_home.ForeColor = Color.White;
             btn_home.Image = Properties.Resources.icons8_home_24;
             btn_home.ImageAlign = HorizontalAlignment.Left;
@@ -494,7 +498,7 @@
             btn_home.Margin = new Padding(10);
             btn_home.Name = "btn_home";
             btn_home.Padding = new Padding(10, 0, 0, 0);
-            btn_home.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            btn_home.ShadowDecoration.CustomizableEdges = customizableEdges28;
             btn_home.Size = new Size(229, 56);
             btn_home.TabIndex = 1;
             btn_home.Text = "Trang chủ";
@@ -530,6 +534,33 @@
             panelMain.Name = "panelMain";
             panelMain.Size = new Size(1232, 853);
             panelMain.TabIndex = 1;
+            // 
+            // btn_shift
+            // 
+            btn_shift.BackColor = Color.Transparent;
+            btn_shift.BorderRadius = 8;
+            btn_shift.CustomizableEdges = customizableEdges1;
+            btn_shift.DisabledState.BorderColor = Color.DarkGray;
+            btn_shift.DisabledState.CustomBorderColor = Color.DarkGray;
+            btn_shift.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btn_shift.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btn_shift.Dock = DockStyle.Top;
+            btn_shift.FillColor = Color.Transparent;
+            btn_shift.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btn_shift.ForeColor = Color.White;
+            btn_shift.Image = (Image)resources.GetObject("btn_shift.Image");
+            btn_shift.ImageAlign = HorizontalAlignment.Left;
+            btn_shift.ImageOffset = new Point(10, 0);
+            btn_shift.Location = new Point(0, 903);
+            btn_shift.Margin = new Padding(10);
+            btn_shift.Name = "btn_shift";
+            btn_shift.Padding = new Padding(10, 0, 0, 0);
+            btn_shift.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btn_shift.Size = new Size(229, 56);
+            btn_shift.TabIndex = 14;
+            btn_shift.Text = "Phân ca";
+            btn_shift.TextAlign = HorizontalAlignment.Left;
+            btn_shift.Click += btn_shift_Click;
             // 
             // MainForm
             // 
@@ -571,5 +602,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_hslv;
         private Guna.UI2.WinForms.Guna2Button btn_doanhthu;
         private Guna.UI2.WinForms.Guna2Button btn_danhgia;
+        private Guna.UI2.WinForms.Guna2Button btn_shift;
     }
 }
